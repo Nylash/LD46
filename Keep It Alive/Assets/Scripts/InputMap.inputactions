@@ -55,11 +55,33 @@
                 },
                 {
                     "name": "",
+                    "id": "508b445a-de9a-4552-b3ca-b30539110f3b",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "xAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "91bfe2aa-59de-47ee-94b2-a3990aee08b0",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a6c577a-20f7-43e4-a799-fc832530c6ce",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -82,6 +104,17 @@
                     "interactions": "",
                     "processors": "Invert",
                     "groups": "Keyboard",
+                    "action": "yAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2327f571-0fe6-402a-af45-dad3cdb20ed0",
+                    "path": "<Gamepad>/leftStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "yAxis",
                     "isComposite": false,
                     "isPartOfComposite": false
