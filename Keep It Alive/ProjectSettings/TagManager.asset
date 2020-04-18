@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ladder
+  - Organ
   layers:
   - Default
   - TransparentFX
@@ -51,9 +52,9 @@ TagManager:
   - name: Ground
     uniqueID: 1823905137
     locked: 0
+  - name: OrganButton
+    uniqueID: 2821581595
+    locked: 0
   - name: Player
     uniqueID: 245311363
-    locked: 0
-  - name: InteractObject
-    uniqueID: 3222272391
     locked: 0

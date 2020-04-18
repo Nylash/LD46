@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     [Header("CONFIGURATION")]
     public float runSpeed = 40f;
@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     float verticalMove = 0f;
     bool jump = false;
     bool onLadder = false;
+    bool canInteract = false;
+    public InteractManager.Organ currentOrgan = InteractManager.Organ.none;
 
     [Header("COMPONENTS")]
     CharacterController2D controller;
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         inputMap.Gameplay.yAxis.performed += ctx => verticalMove = ctx.ReadValue<float>();
         inputMap.Gameplay.yAxis.canceled += ctx => verticalMove = 0;
         inputMap.Gameplay.Jump.started += ctx => jump = true;
+        inputMap.Gameplay.Interact.started += ctx => Interact();
 
         controller = GetComponent<CharacterController2D>();
     }
@@ -55,19 +58,41 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void Interact()
+    {
+        if (canInteract)
+            InteractManager.instance.InteractWith(currentOrgan);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ladder"))
+        switch (collision.tag)
         {
-            onLadder = true;
+            case "Ladder":
+                onLadder = true;
+                break;
+            case "Organ":
+                currentOrgan = collision.gameObject.GetComponent<OrganTrigger>().organ;
+                canInteract = true;
+                break;
+            default:
+                break;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ladder"))
+        switch (collision.tag)
         {
-            onLadder = false;
+            case "Ladder":
+                onLadder = false;
+                break;
+            case "Organ":
+                canInteract = false;
+                currentOrgan = InteractManager.Organ.none;
+                break;
+            default:
+                break;
         }
     }
 }
