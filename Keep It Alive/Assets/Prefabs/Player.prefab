@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7997289842119779072}
   - component: {fileID: 7997289842119779079}
+  - component: {fileID: 3370454871153935200}
   - component: {fileID: 7997289842119779077}
   - component: {fileID: 7997289842119779076}
   - component: {fileID: 7997289842119779083}
@@ -81,6 +82,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 40
   ladderSpeed: 15
+  currentOrgan: 6
+--- !u!114 &3370454871153935200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7997289842119779082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870bc762438a0af4f96f002814e40378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &7997289842119779077
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -118,7 +132,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 245311363
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bdbb87bdc30e99c49b1d48f7c6b01238, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
