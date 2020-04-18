@@ -8,17 +8,17 @@ public class LungsManager : MonoBehaviour
     public static LungsManager instance;
 
     [Header("CONFIGURATION")]
-    public float airMaxCapacity;
-    public float airLossPerSecond;
-    public float airGainPerSecond;
+    public float airMaxTime;
     public float pvLossPerSecond;
+    public float percentageAlarm;
 
     [Header("COMPONENTS")]
     public Text textTmp;
 
     [Header("VARIABLES")]
-    public bool esophagusOpen = true;
+    public bool tracheaOpen = true;
     float currentAir;
+    bool alarmLaunched;
 
     private void Awake()
     {
@@ -30,28 +30,49 @@ public class LungsManager : MonoBehaviour
 
     private void Start()
     {
-        currentAir = airMaxCapacity;
-        textTmp.text = currentAir.ToString();
-        InvokeRepeating("UpdateAir", 1f, 1f);
+        currentAir = airMaxTime;
+        textTmp.text = ((int)((currentAir / airMaxTime) * 100)).ToString();
     }
 
-    void UpdateAir()
+    private void Update()
     {
-        if (esophagusOpen)
+        if (tracheaOpen)
         {
-            currentAir += airGainPerSecond;
-            if (currentAir > airMaxCapacity)
-                currentAir = airMaxCapacity;
+            currentAir += Time.deltaTime;
+            if (currentAir > airMaxTime)
+                currentAir = airMaxTime;
         }
         else
         {
-            currentAir -= airLossPerSecond;
+            currentAir -= Time.deltaTime;
             if (currentAir <= 0f)
             {
                 currentAir = 0f;
-                HeartManager.instance.TakeDamage(pvLossPerSecond);
+                HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
             }
         }
-        textTmp.text = currentAir.ToString();
+        textTmp.text = ((int)((currentAir / airMaxTime) * 100)).ToString();
+        if (!alarmLaunched)
+        {
+            if (((currentAir / airMaxTime) * 100) <= percentageAlarm)
+            {
+                alarmLaunched = true;
+                InvokeRepeating("Alarm", 0, .5f);
+            }
+        }
+        else
+        {
+            if (((currentAir / airMaxTime) * 100) > percentageAlarm)
+            {
+                alarmLaunched = false;
+                CancelInvoke("Alarm");
+            }
+        }
+        
+    }
+
+    void Alarm()
+    {
+        print("ALERT LACK OXYGEN HAAAAAAAAALP");
     }
 }

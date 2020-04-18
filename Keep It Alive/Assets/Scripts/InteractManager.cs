@@ -22,14 +22,28 @@ public class InteractManager : MonoBehaviour
                 break;
             case Organ.bladder:
                 break;
-            case Organ.esophagus:
-                LungsManager.instance.esophagusOpen = !LungsManager.instance.esophagusOpen;
+            case Organ.trachea:
+                LungsManager.instance.tracheaOpen = !LungsManager.instance.tracheaOpen;
                 break;
             case Organ.mouth:
                 break;
             case Organ.brain:
                 break;
-            case Organ.kidney:
+            case Organ.leftKidney:
+                if (KidneyManager.instance.alarmLaunched && KidneyManager.instance.leftKidneyDying)
+                {
+                    KidneyManager.instance.currentInputNumber += 1;
+                    if (KidneyManager.instance.currentInputNumber >= KidneyManager.instance.inputToBeChanged)
+                        KidneyManager.instance.NewKidney();
+                }
+                break;
+            case Organ.rightKidney:
+                if (KidneyManager.instance.alarmLaunched && KidneyManager.instance.rightKidneyDying)
+                {
+                    KidneyManager.instance.currentInputNumber += 1;
+                    if (KidneyManager.instance.currentInputNumber >= KidneyManager.instance.inputToBeChanged)
+                        KidneyManager.instance.NewKidney();
+                }
                 break;
             case Organ.none:
                 Debug.LogError("You shouldn't be there.");
@@ -39,6 +53,6 @@ public class InteractManager : MonoBehaviour
 
     public enum Organ
     {
-        lungs, bladder, esophagus, mouth, brain, kidney, none
+        lungs, bladder, trachea, mouth, brain, leftKidney, rightKidney, none
     }
 }
