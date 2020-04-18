@@ -28,6 +28,7 @@ public class InteractManager : MonoBehaviour
             case Organ.mouth:
                 break;
             case Organ.brain:
+                BrainManager.instance.ReduceStress();
                 break;
             case Organ.leftKidney:
                 if (KidneyManager.instance.alarmLaunched && KidneyManager.instance.leftKidneyDying)
