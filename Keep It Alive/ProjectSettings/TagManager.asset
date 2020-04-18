@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Ground
   - 
   - 
   - 
@@ -40,4 +41,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3613485765
+    locked: 0
+  - name: Ladder
+    uniqueID: 665155547
+    locked: 0
+  - name: Ground
+    uniqueID: 1823905137
+    locked: 0
+  - name: Player
+    uniqueID: 245311363
+    locked: 0
+  - name: InteractObject
+    uniqueID: 3222272391
     locked: 0
