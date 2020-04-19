@@ -9,6 +9,11 @@ public class InteractManager : MonoBehaviour
     [Header("CONFIGURATIONS")]
     public Animator brain;
     public Animator lungs;
+    public Animator rightKidney;
+    public Animator leftKidney;
+    public Animator trachea;
+    public Animator mouth;
+    public Animator bladder;
 
     private void Awake()
     {
@@ -35,15 +40,42 @@ public class InteractManager : MonoBehaviour
                 break;
             case Organ.bladder:
                 StartInteraction();
-                BladderManager.instance.peeing = !BladderManager.instance.peeing;
+                if (BladderManager.instance.peeing)
+                {
+                    BladderManager.instance.peeing = false;
+                    bladder.SetTrigger("Close");
+                }
+                else
+                {
+                    BladderManager.instance.peeing = true;
+                    bladder.SetTrigger("Open");
+                }
                 break;
             case Organ.trachea:
                 StartInteraction();
-                LungsManager.instance.tracheaOpen = !LungsManager.instance.tracheaOpen;
+                if (LungsManager.instance.tracheaOpen)
+                {
+                    LungsManager.instance.tracheaOpen = false;
+                    trachea.SetTrigger("Close");
+                }
+                else
+                {
+                    LungsManager.instance.tracheaOpen = true;
+                    trachea.SetTrigger("Open");
+                }
                 break;
             case Organ.mouth:
                 StartInteraction();
-                StomachManager.instance.mouthOpen = !StomachManager.instance.mouthOpen;
+                if (StomachManager.instance.mouthOpen)
+                {
+                    StomachManager.instance.mouthOpen = false;
+                    mouth.SetTrigger("Close");
+                }
+                else
+                {
+                    StomachManager.instance.mouthOpen = true;
+                    mouth.SetTrigger("Open");
+                }
                 break;
             case Organ.brain:
                 brain.SetTrigger("Interact");
@@ -53,6 +85,7 @@ public class InteractManager : MonoBehaviour
             case Organ.leftKidney:
                 if (KidneyManager.instance.alarmLaunched && KidneyManager.instance.leftKidneyDying)
                 {
+                    leftKidney.SetTrigger("Interact");
                     StartInteraction();
                     KidneyManager.instance.currentInputNumber += 1;
                     if (KidneyManager.instance.currentInputNumber >= KidneyManager.instance.inputToBeChanged)
@@ -62,6 +95,7 @@ public class InteractManager : MonoBehaviour
             case Organ.rightKidney:
                 if (KidneyManager.instance.alarmLaunched && KidneyManager.instance.rightKidneyDying)
                 {
+                    rightKidney.SetTrigger("Interact");
                     StartInteraction();
                     KidneyManager.instance.currentInputNumber += 1;
                     if (KidneyManager.instance.currentInputNumber >= KidneyManager.instance.inputToBeChanged)
