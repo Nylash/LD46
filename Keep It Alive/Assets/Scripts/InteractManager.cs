@@ -43,12 +43,14 @@ public class InteractManager : MonoBehaviour
                 if (BladderManager.instance.peeing)
                 {
                     BladderManager.instance.peeing = false;
-                    bladder.SetTrigger("Close");
+                    bladder.SetBool("Close", true);
+                    bladder.SetBool("Open", false);
                 }
                 else
                 {
                     BladderManager.instance.peeing = true;
-                    bladder.SetTrigger("Open");
+                    bladder.SetBool("Close", false);
+                    bladder.SetBool("Open", true);
                 }
                 break;
             case Organ.trachea:
@@ -56,12 +58,14 @@ public class InteractManager : MonoBehaviour
                 if (LungsManager.instance.tracheaOpen)
                 {
                     LungsManager.instance.tracheaOpen = false;
-                    trachea.SetTrigger("Close");
+                    trachea.SetBool("Close", true);
+                    trachea.SetBool("Open", false);
                 }
                 else
                 {
                     LungsManager.instance.tracheaOpen = true;
-                    trachea.SetTrigger("Open");
+                    trachea.SetBool("Close", false);
+                    trachea.SetBool("Open", true);
                 }
                 break;
             case Organ.mouth:
@@ -69,12 +73,14 @@ public class InteractManager : MonoBehaviour
                 if (StomachManager.instance.mouthOpen)
                 {
                     StomachManager.instance.mouthOpen = false;
-                    mouth.SetTrigger("Close");
+                    mouth.SetBool("Close", true);
+                    mouth.SetBool("Open", false);
                 }
                 else
                 {
                     StomachManager.instance.mouthOpen = true;
-                    mouth.SetTrigger("Open");
+                    mouth.SetBool("Close", false);
+                    mouth.SetBool("Open", true);
                 }
                 break;
             case Organ.brain:
