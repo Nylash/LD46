@@ -14,7 +14,7 @@ public class CharacterController2D : MonoBehaviour
 
 	const float groundedRadius = .2f;
 	public bool grounded;
-	private Rigidbody2D rb;
+	public Rigidbody2D rb;
 	private bool facingRight = true;
 	private Vector3 velocity = Vector3.zero;
 

@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour
 
     [Header("COMPONENTS")]
     public Animator animController;
-    CharacterController2D controller;
+    public CharacterController2D controller;
     InputMap inputMap;
     
 
