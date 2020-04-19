@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dissolve Mat
-  m_Shader: {fileID: -6465566751694194690, guid: 1a117f94437a9bc4f9c386cd884f9376,
+  m_Name: Dissolve MCoeur 1
+  m_Shader: {fileID: -6465566751694194690, guid: e33e7140b84bc2d4b9b0b3f4b5bdc0fc,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_3CDFCAEB:
-        m_Texture: {fileID: 2800000, guid: 26d7a3f6afdb6dd498902585d9cb21ce, type: 3}
+        m_Texture: {fileID: 2800000, guid: 79751fe8ce5e92f45bdd48176726bea7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlphaTex:
@@ -41,11 +41,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_B2746C0A: 1
+    - Vector1_B2746C0A: 0.423
     - _EnableExternalAlpha: 0
     m_Colors:
     - Vector2_59405746: {r: -1, g: 2, b: 0, a: 0}
-    - Vector2_6F59F8A6: {r: 0, g: 3, b: 0, a: 0}
+    - Vector2_6F59F8A6: {r: 12.5, g: 14.8, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
