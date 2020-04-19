@@ -6,6 +6,10 @@ public class InteractManager : MonoBehaviour
 {
     public static InteractManager instance;
 
+    [Header("CONFIGURATIONS")]
+    public Animator brain;
+    public Animator lungs;
+
     private void Awake()
     {
         if (instance == null)
@@ -22,6 +26,7 @@ public class InteractManager : MonoBehaviour
             case Organ.lungs:
                 if (LungsManager.instance.foodStucked)
                 {
+                    lungs.SetTrigger("Interact");
                     StartInteraction();
                     LungsManager.instance.currentInputNumber += 1;
                     if (LungsManager.instance.currentInputNumber >= LungsManager.instance.inputToBeUnstucked)
@@ -41,6 +46,7 @@ public class InteractManager : MonoBehaviour
                 StomachManager.instance.mouthOpen = !StomachManager.instance.mouthOpen;
                 break;
             case Organ.brain:
+                brain.SetTrigger("Interact");
                 StartInteraction();
                 BrainManager.instance.ReduceStress();
                 break;

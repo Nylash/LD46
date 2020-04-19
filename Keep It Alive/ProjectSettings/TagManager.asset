@@ -52,14 +52,14 @@ TagManager:
   - name: Food
     uniqueID: 713250661
     locked: 0
-  - name: OrganButton
-    uniqueID: 2821581595
-    locked: 0
   - name: Ground
     uniqueID: 1823905137
     locked: 0
   - name: Player
     uniqueID: 245311363
+    locked: 0
+  - name: OrganButton
+    uniqueID: 2821581595
     locked: 0
   - name: Ladder
     uniqueID: 665155547
