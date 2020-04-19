@@ -83,6 +83,7 @@ MonoBehaviour:
   runSpeed: 40
   ladderSpeed: 30
   currentOrgan: 7
+  animController: {fileID: 4598839858251080548}
 --- !u!114 &3370454871153935200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,7 +381,7 @@ PrefabInstance:
     - target: {fileID: 5849692960238185853, guid: a29b1146b17a4ac438ea2c8a51cdc542,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -361.422
+      value: -361.423
       objectReference: {fileID: 0}
     - target: {fileID: 5849692960766286792, guid: a29b1146b17a4ac438ea2c8a51cdc542,
         type: 3}
@@ -507,6 +508,12 @@ PrefabInstance:
 --- !u!4 &5106813260558411458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2892189639794716895, guid: a29b1146b17a4ac438ea2c8a51cdc542,
+    type: 3}
+  m_PrefabInstance: {fileID: 7997289840801601053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4598839858251080548 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5849692961363162489, guid: a29b1146b17a4ac438ea2c8a51cdc542,
     type: 3}
   m_PrefabInstance: {fileID: 7997289840801601053}
   m_PrefabAsset: {fileID: 0}

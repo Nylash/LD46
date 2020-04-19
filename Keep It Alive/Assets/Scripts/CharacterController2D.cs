@@ -13,7 +13,7 @@ public class CharacterController2D : MonoBehaviour
 
 
 	const float groundedRadius = .2f;
-	private bool grounded;
+	public bool grounded;
 	private Rigidbody2D rb;
 	private bool facingRight = true;
 	private Vector3 velocity = Vector3.zero;
@@ -43,9 +43,11 @@ public class CharacterController2D : MonoBehaviour
 			{
 				grounded = true;
 				if (!wasGrounded)
-					OnLandEvent.Invoke();
+					PlayerManager.instance.animController.SetBool("Landing", true);
 			}
 		}
+		if (!grounded)
+			PlayerManager.instance.animController.SetBool("Landing", false);
 	}
 
 
@@ -75,6 +77,8 @@ public class CharacterController2D : MonoBehaviour
 		{
 			grounded = false;
 			rb.AddForce(new Vector2(0f, jumpForce));
+			PlayerManager.instance.animController.speed = 1;
+			PlayerManager.instance.animController.SetTrigger("Jump");
 		}
 	}
 

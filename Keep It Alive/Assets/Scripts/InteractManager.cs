@@ -16,6 +16,11 @@ public class InteractManager : MonoBehaviour
 
     public void InteractWith(Organ organ)
     {
+        if (!PlayerManager.instance.animController.GetBool("Interacting"))
+        {
+            PlayerManager.instance.animController.SetTrigger("StartInteracting");
+            PlayerManager.instance.animController.SetBool("Interacting", true);
+        }
         switch (organ)
         {
             case Organ.lungs:

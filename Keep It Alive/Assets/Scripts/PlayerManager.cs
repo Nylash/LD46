@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager instance;
+
     [Header("CONFIGURATION")]
     public float runSpeed = 40f;
     public float ladderSpeed = 15f;
@@ -18,14 +20,21 @@ public class PlayerManager : MonoBehaviour
     public InteractManager.Organ currentOrgan = InteractManager.Organ.none;
 
     [Header("COMPONENTS")]
+    public Animator animController;
     CharacterController2D controller;
     InputMap inputMap;
+    
 
     private void OnEnable() => inputMap.Gameplay.Enable();
     private void OnDisable() => inputMap.Gameplay.Disable();
 
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+
         inputMap = new InputMap();
 
         inputMap.Gameplay.xAxis.performed += ctx => horizontalMove = ctx.ReadValue<float>();
@@ -40,21 +49,41 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (onLadder)
+        if (!animController.GetBool("Interacting"))
         {
-            if (!jump)
-                controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, verticalMove * ladderSpeed * Time.fixedDeltaTime);
+            if (onLadder)
+            {
+                if (!animController.GetBool("Climbing"))
+                    animController.SetBool("Climbing", true);
+                if (!jump)
+                {
+                    controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, verticalMove * ladderSpeed * Time.fixedDeltaTime);
+                }
+                else
+                {
+                    animController.SetBool("Climbing", false);
+                    controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, jump, true);
+                    jump = false;
+                    onLadder = false;
+                }
+            }
             else
             {
-                controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, jump, true);
+                if (animController.GetBool("Climbing"))
+                    animController.SetBool("Climbing", false);
+                if (controller.grounded && horizontalMove != 0)
+                {
+                    animController.SetBool("Running", true);
+                    animController.speed = Mathf.Lerp(.5f, 1f, Mathf.Abs(horizontalMove));
+                }
+                else
+                {
+                    animController.SetBool("Running", false);
+                    animController.speed = 1;
+                }
+                controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, jump);
                 jump = false;
-                onLadder = false;
-            } 
-        }
-        else
-        {
-            controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, jump);
-            jump = false;
+            }
         }
     }
 
@@ -70,6 +99,8 @@ public class PlayerManager : MonoBehaviour
         {
             case "Ladder":
                 onLadder = true;
+                animController.SetBool("Climbing", true);
+                animController.SetTrigger("StartClimbing");
                 break;
             case "Organ":
                 currentOrgan = collision.gameObject.GetComponent<OrganTrigger>().organ;
@@ -86,6 +117,7 @@ public class PlayerManager : MonoBehaviour
         {
             case "Ladder":
                 onLadder = false;
+                animController.SetBool("Climbing", false);
                 break;
             case "Organ":
                 canInteract = false;
