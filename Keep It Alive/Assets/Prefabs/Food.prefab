@@ -48,9 +48,9 @@ MonoBehaviour:
   gainWithMelon: 20
   gainWithChicken: 40
   gainWithCupcake: 15
-  melonSprite: {fileID: 21300000, guid: 3cd4bf0dd5182134b89d8ad8659284af, type: 3}
-  chickenSprite: {fileID: 21300000, guid: fe3bfc9f64cca6e4295b81ef89035578, type: 3}
-  cupcakeSprite: {fileID: 21300000, guid: 14a6826d0681daa4bb1c497388be9283, type: 3}
+  melonSprite: {fileID: 21300000, guid: c260a51a1d0f1c34e8932a9de0f9498d, type: 3}
+  chickenSprite: {fileID: 21300000, guid: 019be991bafcf854fbfd6364d0fd97d7, type: 3}
+  cupcakeSprite: {fileID: 21300000, guid: f6262853e4871514bba0a2efd098b33b, type: 3}
   currentFood: 0
   currentGain: 0
 --- !u!212 &1435281368712821551
@@ -89,15 +89,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 713250661
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayerID: 737888229
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

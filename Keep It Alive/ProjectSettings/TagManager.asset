@@ -49,9 +49,6 @@ TagManager:
   - name: Organ
     uniqueID: 737888229
     locked: 0
-  - name: Food
-    uniqueID: 713250661
-    locked: 0
   - name: Ground
     uniqueID: 1823905137
     locked: 0

@@ -17,6 +17,7 @@ public class StomachManager : MonoBehaviour
     Material filling;
 
     [Header("VARIABLES")]
+    public GameObject currentFood;
     public bool mouthOpen;
     public float currentCapacity;
     bool foodOnCD;
@@ -37,8 +38,8 @@ public class StomachManager : MonoBehaviour
         if (mouthOpen && !foodOnCD)
         {
             int foodType = Random.Range(0, 3);
-            GameObject food = Instantiate(foodPrefab, spawnFoodTransform.position, Quaternion.identity);
-            food.GetComponent<FoodScript>().currentFood = (FoodScript.Food)foodType;
+            currentFood = Instantiate(foodPrefab, spawnFoodTransform.position, Quaternion.identity);
+            currentFood.GetComponent<FoodScript>().currentFood = (FoodScript.Food)foodType;
             foodOnCD = true;
             Invoke("ResetFoodCD", timeBetweenFood);
         }

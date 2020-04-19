@@ -54,33 +54,39 @@ public class InteractManager : MonoBehaviour
                 }
                 break;
             case Organ.trachea:
-                StartInteraction();
-                if (LungsManager.instance.tracheaOpen)
+                if (!LungsManager.instance.foodStucked && StomachManager.instance.currentFood == null)
                 {
-                    LungsManager.instance.tracheaOpen = false;
-                    trachea.SetBool("Close", true);
-                    trachea.SetBool("Open", false);
-                }
-                else
-                {
-                    LungsManager.instance.tracheaOpen = true;
-                    trachea.SetBool("Close", false);
-                    trachea.SetBool("Open", true);
+                    StartInteraction();
+                    if (LungsManager.instance.tracheaOpen)
+                    {
+                        LungsManager.instance.tracheaOpen = false;
+                        trachea.SetBool("Close", true);
+                        trachea.SetBool("Open", false);
+                    }
+                    else
+                    {
+                        LungsManager.instance.tracheaOpen = true;
+                        trachea.SetBool("Close", false);
+                        trachea.SetBool("Open", true);
+                    }
                 }
                 break;
             case Organ.mouth:
-                StartInteraction();
-                if (StomachManager.instance.mouthOpen)
+                if (!LungsManager.instance.foodStucked && StomachManager.instance.currentFood == null)
                 {
-                    StomachManager.instance.mouthOpen = false;
-                    mouth.SetBool("Close", true);
-                    mouth.SetBool("Open", false);
-                }
-                else
-                {
-                    StomachManager.instance.mouthOpen = true;
-                    mouth.SetBool("Close", false);
-                    mouth.SetBool("Open", true);
+                    StartInteraction();
+                    if (StomachManager.instance.mouthOpen)
+                    {
+                        StomachManager.instance.mouthOpen = false;
+                        mouth.SetBool("Close", true);
+                        mouth.SetBool("Open", false);
+                    }
+                    else
+                    {
+                        StomachManager.instance.mouthOpen = true;
+                        mouth.SetBool("Close", false);
+                        mouth.SetBool("Open", true);
+                    }
                 }
                 break;
             case Organ.brain:
