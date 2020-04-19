@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     float verticalMove = 0f;
     bool jump = false;
     bool onLadder = false;
+    bool onLadderTrigger = false;
     bool canInteract = false;
 
     [Header("COMPONENTS")]
@@ -55,6 +56,15 @@ public class PlayerManager : MonoBehaviour
     {
         if (!animController.GetBool("Interacting"))
         {
+            if (onLadderTrigger)
+            {
+                if (Mathf.Abs(verticalMove) > .1f && !onLadder)
+                {
+                    onLadder = true;
+                    animController.SetBool("Climbing", true);
+                    animController.SetTrigger("StartClimbing");
+                }  
+            }
             if (onLadder)
             {
                 if (!animController.GetBool("Climbing"))
@@ -109,9 +119,8 @@ public class PlayerManager : MonoBehaviour
         switch (collision.tag)
         {
             case "Ladder":
-                onLadder = true;
-                animController.SetBool("Climbing", true);
-                animController.SetTrigger("StartClimbing");
+                onLadderTrigger = true;
+                
                 break;
             case "Organ":
                 currentOrgan = collision.gameObject.GetComponent<OrganTrigger>().organ;
@@ -128,6 +137,7 @@ public class PlayerManager : MonoBehaviour
         {
             case "Ladder":
                 onLadder = false;
+                onLadderTrigger = false;
                 animController.SetBool("Climbing", false);
                 break;
             case "Organ":
