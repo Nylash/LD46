@@ -12,8 +12,6 @@ public class PlayerManager : MonoBehaviour
     public float ladderSpeed = 15f;
     public GameObject cam1;
     public GameObject cam2;
-    public Transform levelCenter;
-    public Transform zoomOutTarget;
 
     [Header("VARIABLES")]
     public InteractManager.Organ currentOrgan = InteractManager.Organ.none;
@@ -27,7 +25,6 @@ public class PlayerManager : MonoBehaviour
     public Animator animController;
     public CharacterController2D controller;
     InputMap inputMap;
-    
 
     private void OnEnable() => inputMap.Gameplay.Enable();
     private void OnDisable() => inputMap.Gameplay.Disable();
@@ -50,6 +47,8 @@ public class PlayerManager : MonoBehaviour
         inputMap.Gameplay.SwitchCamera.started += ctx => SwitchCamera();
 
         controller = GetComponent<CharacterController2D>();
+
+        Invoke("SwitchCamera", 1.5f);
     }
 
     private void FixedUpdate()
@@ -100,6 +99,7 @@ public class PlayerManager : MonoBehaviour
 
     void SwitchCamera()
     {
+        CancelInvoke("SwitchCamera");
         cam1.SetActive(!cam1.activeSelf);
         cam2.SetActive(!cam2.activeSelf);
     }

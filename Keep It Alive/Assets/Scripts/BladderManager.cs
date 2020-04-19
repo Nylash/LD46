@@ -10,6 +10,9 @@ public class BladderManager : MonoBehaviour
     public float maxCapacity;
     public float lossPerSecondWhenOpen;
 
+    [Header("COMPONENTS")]
+    Material filling;
+
     [Header("VARIABLES")]
     public bool peeing;
     public float currentCapacity;
@@ -20,6 +23,8 @@ public class BladderManager : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+
+        filling = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material;
     }
 
     private void Update()
@@ -30,6 +35,7 @@ public class BladderManager : MonoBehaviour
             if (currentCapacity <= 0f)
                 currentCapacity = 0;
         }
+        filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
     }
 
     public float TransfertToBladder(float amount)
@@ -41,6 +47,7 @@ public class BladderManager : MonoBehaviour
             excess = currentCapacity - maxCapacity;
             currentCapacity = maxCapacity;
         }
+        filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
         return excess;
     }
 }

@@ -14,7 +14,8 @@ public class LungsManager : MonoBehaviour
     public int inputToBeUnstucked;
 
     [Header("COMPONENTS")]
-    //public Text textTmp;
+    Material filling1;
+    Material filling2;
 
     [Header("VARIABLES")]
     public bool tracheaOpen = true;
@@ -34,7 +35,8 @@ public class LungsManager : MonoBehaviour
     private void Start()
     {
         currentAir = airMaxTime;
-        //textTmp.text = ((int)((currentAir / airMaxTime) * 100)).ToString();
+        filling1 = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material;
+        filling2 = transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().material;
     }
 
     private void Update()
@@ -54,7 +56,8 @@ public class LungsManager : MonoBehaviour
             if (currentAir > airMaxTime)
                 currentAir = airMaxTime;
         }
-        //textTmp.text = ((int)((currentAir / airMaxTime) * 100)).ToString();
+        filling1.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
+        filling2.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
         if (!alarmLaunched)
         {
             if (((currentAir / airMaxTime) * 100) <= percentageAlarm)

@@ -8,7 +8,7 @@ public class HeartManager : MonoBehaviour
     public static HeartManager instance;
 
     [Header("COMPONENTS")]
-    //public Text textTmp;
+    Material filling;
 
     [Header("VARIABLES")]
     public float currentLife = 100f;
@@ -23,7 +23,8 @@ public class HeartManager : MonoBehaviour
 
     private void Start()
     {
-        //textTmp.text = currentLife.ToString();
+        filling = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material;
+        filling.SetFloat("Vector1_B2746C0A", currentLife / 100);
     }
 
     public void TakeDamage(float amount)
@@ -34,7 +35,6 @@ public class HeartManager : MonoBehaviour
             currentLife = 0f;
             print("DEFEAT");
         }
-        //else
-            //textTmp.text = currentLife.ToString();
+        filling.SetFloat("Vector1_B2746C0A", currentLife/100);
     }
 }

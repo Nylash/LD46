@@ -67,3 +67,6 @@ TagManager:
   - name: Michel body
     uniqueID: 723308409
     locked: 0
+  - name: Cancer
+    uniqueID: 2612667827
+    locked: 0

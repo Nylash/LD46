@@ -13,6 +13,9 @@ public class StomachManager : MonoBehaviour
     public Transform spawnFoodTransform;
     public float pvLossPerSecond;
 
+    [Header("COMPONENTS")]
+    Material filling;
+
     [Header("VARIABLES")]
     public bool mouthOpen;
     public float currentCapacity;
@@ -26,6 +29,7 @@ public class StomachManager : MonoBehaviour
             Destroy(gameObject);
 
         currentCapacity = maxCapacity / 2;
+        filling = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material;
     }
 
     private void Update()
@@ -52,6 +56,7 @@ public class StomachManager : MonoBehaviour
             currentCapacity = maxCapacity;
             HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
         }
+        filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
     }
 
     public void AbsorbFood(float gain)
