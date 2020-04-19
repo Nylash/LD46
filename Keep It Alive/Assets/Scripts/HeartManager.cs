@@ -8,7 +8,7 @@ public class HeartManager : MonoBehaviour
     public static HeartManager instance;
 
     [Header("COMPONENTS")]
-    public Text textTmp;
+    //public Text textTmp;
 
     [Header("VARIABLES")]
     float currentLife = 100f;
@@ -23,7 +23,7 @@ public class HeartManager : MonoBehaviour
 
     private void Start()
     {
-        textTmp.text = currentLife.ToString();
+        //textTmp.text = currentLife.ToString();
     }
 
     public void TakeDamage(float amount)
@@ -34,7 +34,7 @@ public class HeartManager : MonoBehaviour
             currentLife = 0f;
             print("DEFEAT");
         }
-        else
-            textTmp.text = currentLife.ToString();
+        //else
+            //textTmp.text = currentLife.ToString();
     }
 }

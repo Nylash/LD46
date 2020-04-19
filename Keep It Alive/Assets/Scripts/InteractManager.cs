@@ -16,28 +16,56 @@ public class InteractManager : MonoBehaviour
 
     public void InteractWith(Organ organ)
     {
-        if (!PlayerManager.instance.animController.GetBool("Interacting"))
-        {
-            PlayerManager.instance.animController.SetTrigger("StartInteracting");
-            PlayerManager.instance.animController.SetBool("Interacting", true);
-        }
+        
         switch (organ)
         {
             case Organ.lungs:
+                if (!PlayerManager.instance.animController.GetBool("Interacting"))
+                {
+                    PlayerManager.instance.animController.SetTrigger("StartInteracting");
+                    PlayerManager.instance.animController.SetBool("Interacting", true);
+                }
                 break;
             case Organ.bladder:
+                if (!PlayerManager.instance.animController.GetBool("Interacting"))
+                {
+                    PlayerManager.instance.animController.SetTrigger("StartInteracting");
+                    PlayerManager.instance.animController.SetBool("Interacting", true);
+                }
+                BladderManager.instance.peeing = !BladderManager.instance.peeing;
                 break;
             case Organ.trachea:
+                if (!PlayerManager.instance.animController.GetBool("Interacting"))
+                {
+                    PlayerManager.instance.animController.SetTrigger("StartInteracting");
+                    PlayerManager.instance.animController.SetBool("Interacting", true);
+                }
                 LungsManager.instance.tracheaOpen = !LungsManager.instance.tracheaOpen;
                 break;
             case Organ.mouth:
+                if (!PlayerManager.instance.animController.GetBool("Interacting"))
+                {
+                    PlayerManager.instance.animController.SetTrigger("StartInteracting");
+                    PlayerManager.instance.animController.SetBool("Interacting", true);
+                }
+                StomachManager.instance.mouthOpen = !StomachManager.instance.mouthOpen;
                 break;
             case Organ.brain:
+                if (!PlayerManager.instance.animController.GetBool("Interacting"))
+                {
+                    PlayerManager.instance.animController.SetTrigger("StartInteracting");
+                    PlayerManager.instance.animController.SetBool("Interacting", true);
+                }
                 BrainManager.instance.ReduceStress();
                 break;
             case Organ.leftKidney:
                 if (KidneyManager.instance.alarmLaunched && KidneyManager.instance.leftKidneyDying)
                 {
+                    if (!PlayerManager.instance.animController.GetBool("Interacting"))
+                    {
+                        PlayerManager.instance.animController.SetTrigger("StartInteracting");
+                        PlayerManager.instance.animController.SetBool("Interacting", true);
+                    }
                     KidneyManager.instance.currentInputNumber += 1;
                     if (KidneyManager.instance.currentInputNumber >= KidneyManager.instance.inputToBeChanged)
                         KidneyManager.instance.NewKidney();
@@ -46,6 +74,11 @@ public class InteractManager : MonoBehaviour
             case Organ.rightKidney:
                 if (KidneyManager.instance.alarmLaunched && KidneyManager.instance.rightKidneyDying)
                 {
+                    if (!PlayerManager.instance.animController.GetBool("Interacting"))
+                    {
+                        PlayerManager.instance.animController.SetTrigger("StartInteracting");
+                        PlayerManager.instance.animController.SetBool("Interacting", true);
+                    }
                     KidneyManager.instance.currentInputNumber += 1;
                     if (KidneyManager.instance.currentInputNumber >= KidneyManager.instance.inputToBeChanged)
                         KidneyManager.instance.NewKidney();

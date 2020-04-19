@@ -13,7 +13,7 @@ public class LungsManager : MonoBehaviour
     public float percentageAlarm;
 
     [Header("COMPONENTS")]
-    public Text textTmp;
+    //public Text textTmp;
 
     [Header("VARIABLES")]
     public bool tracheaOpen = true;
@@ -31,7 +31,7 @@ public class LungsManager : MonoBehaviour
     private void Start()
     {
         currentAir = airMaxTime;
-        textTmp.text = ((int)((currentAir / airMaxTime) * 100)).ToString();
+        //textTmp.text = ((int)((currentAir / airMaxTime) * 100)).ToString();
     }
 
     private void Update()
@@ -51,7 +51,7 @@ public class LungsManager : MonoBehaviour
                 HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
             }
         }
-        textTmp.text = ((int)((currentAir / airMaxTime) * 100)).ToString();
+        //textTmp.text = ((int)((currentAir / airMaxTime) * 100)).ToString();
         if (!alarmLaunched)
         {
             if (((currentAir / airMaxTime) * 100) <= percentageAlarm)

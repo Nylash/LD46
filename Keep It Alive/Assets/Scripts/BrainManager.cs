@@ -18,7 +18,7 @@ public class BrainManager : MonoBehaviour
     public List<Transform> cancerPositions = new List<Transform>();
 
     [Header("COMPONENTS")]
-    public Text textTmp;
+    //public Text textTmp;
 
     [Header("VARIABLES")]
     float currentStress;
@@ -40,7 +40,7 @@ public class BrainManager : MonoBehaviour
 
     private void Start()
     {
-        textTmp.text = ((int)currentStress).ToString();
+        //textTmp.text = ((int)currentStress).ToString();
         availableCancerPositions.AddRange(cancerPositions);
     }
 
@@ -73,7 +73,7 @@ public class BrainManager : MonoBehaviour
             currentStress = 100f;
             HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
         }
-        textTmp.text = ((int)currentStress).ToString();
+        //textTmp.text = ((int)currentStress).ToString();
     }
 
     public void ReduceStress()
@@ -99,5 +99,6 @@ public class BrainManager : MonoBehaviour
         }
         if (currentStress < 0f)
             currentStress = 0f;
+        //textTmp.text = ((int)currentStress).ToString();
     }
 }

@@ -15,7 +15,7 @@ public class KidneyManager : MonoBehaviour
     public int inputToBeChanged;
 
     [Header("COMPONENTS")]
-    public Text textTmp;
+    //public Text textTmp;
 
     [Header("VARIABLES")]
     public int currentInputNumber;
@@ -38,7 +38,7 @@ public class KidneyManager : MonoBehaviour
     {
         currentMaxTime = Random.Range(minTimeBeforeEnd, maxTimeBeforeEnd);
         currentTimer = currentMaxTime;
-        textTmp.text = ((int)((currentTimer / currentMaxTime) * 100)).ToString();
+        //textTmp.text = ((int)((currentTimer / currentMaxTime) * 100)).ToString();
     }
 
     private void Update()
@@ -49,7 +49,7 @@ public class KidneyManager : MonoBehaviour
             currentTimer = 0f;
             HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
         }
-        textTmp.text = ((int)((currentTimer / currentMaxTime)*100)).ToString();
+        //textTmp.text = ((int)((currentTimer / currentMaxTime)*100)).ToString();
         if((((currentTimer / currentMaxTime) * 100) <= percentageAlarm) && !alarmLaunched)
         {
             int rand = Random.Range(0, 2);
@@ -68,7 +68,7 @@ public class KidneyManager : MonoBehaviour
         alarmLaunched = false;
         currentMaxTime = Random.Range(minTimeBeforeEnd, maxTimeBeforeEnd);
         currentTimer = currentMaxTime;
-        textTmp.text = ((int)((currentTimer / currentMaxTime) * 100)).ToString();
+        //textTmp.text = ((int)((currentTimer / currentMaxTime) * 100)).ToString();
         currentInputNumber = 0;
         leftKidneyDying = false;
         rightKidneyDying = false;

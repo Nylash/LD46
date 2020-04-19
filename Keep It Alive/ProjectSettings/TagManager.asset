@@ -43,21 +43,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Ground
-    uniqueID: 1823905137
-    locked: 0
-  - name: Player
-    uniqueID: 245311363
-    locked: 0
-  - name: Ladder
-    uniqueID: 665155547
+  - name: Background
+    uniqueID: 3613485765
     locked: 0
   - name: OrganButton
     uniqueID: 2821581595
     locked: 0
-  - name: Background
-    uniqueID: 3613485765
+  - name: Ladder
+    uniqueID: 665155547
+    locked: 0
+  - name: Ground
+    uniqueID: 1823905137
     locked: 0
   - name: Michel body
     uniqueID: 723308409
+    locked: 0
+  - name: Player
+    uniqueID: 245311363
     locked: 0
