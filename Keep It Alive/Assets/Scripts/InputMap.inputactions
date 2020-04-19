@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SwitchCamera",
+                    "type": "Button",
+                    "id": "594182dd-ee0f-4d1b-b847-23f53abbb7cf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -162,8 +170,8 @@
                 },
                 {
                     "name": "",
-                    "id": "9d79655f-3d40-4308-b97e-0e499d917acf",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "1d18a516-ee5b-4b82-8427-89f2b544bbab",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -173,12 +181,23 @@
                 },
                 {
                     "name": "",
-                    "id": "1d18a516-ee5b-4b82-8427-89f2b544bbab",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "77373f1e-7d90-4c7d-9bcd-866888e215a0",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SwitchCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "205e22a4-124b-432b-892c-6fb7f3d626c5",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Interact",
+                    "action": "SwitchCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

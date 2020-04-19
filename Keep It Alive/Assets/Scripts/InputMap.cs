@@ -49,6 +49,14 @@ public class @InputMap : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SwitchCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""594182dd-ee0f-4d1b-b847-23f53abbb7cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -175,8 +183,8 @@ public class @InputMap : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9d79655f-3d40-4308-b97e-0e499d917acf"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""id"": ""1d18a516-ee5b-4b82-8427-89f2b544bbab"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -186,12 +194,23 @@ public class @InputMap : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1d18a516-ee5b-4b82-8427-89f2b544bbab"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""id"": ""77373f1e-7d90-4c7d-9bcd-866888e215a0"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SwitchCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""205e22a4-124b-432b-892c-6fb7f3d626c5"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Interact"",
+                    ""action"": ""SwitchCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -217,6 +236,7 @@ public class @InputMap : IInputActionCollection, IDisposable
         m_Gameplay_xAxis = m_Gameplay.FindAction("xAxis", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gameplay_SwitchCamera = m_Gameplay.FindAction("SwitchCamera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -270,6 +290,7 @@ public class @InputMap : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_xAxis;
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Interact;
+    private readonly InputAction m_Gameplay_SwitchCamera;
     public struct GameplayActions
     {
         private @InputMap m_Wrapper;
@@ -278,6 +299,7 @@ public class @InputMap : IInputActionCollection, IDisposable
         public InputAction @xAxis => m_Wrapper.m_Gameplay_xAxis;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+        public InputAction @SwitchCamera => m_Wrapper.m_Gameplay_SwitchCamera;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -299,6 +321,9 @@ public class @InputMap : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @SwitchCamera.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwitchCamera;
+                @SwitchCamera.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwitchCamera;
+                @SwitchCamera.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwitchCamera;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -315,6 +340,9 @@ public class @InputMap : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @SwitchCamera.started += instance.OnSwitchCamera;
+                @SwitchCamera.performed += instance.OnSwitchCamera;
+                @SwitchCamera.canceled += instance.OnSwitchCamera;
             }
         }
     }
@@ -343,5 +371,6 @@ public class @InputMap : IInputActionCollection, IDisposable
         void OnXAxis(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnSwitchCamera(InputAction.CallbackContext context);
     }
 }

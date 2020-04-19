@@ -10,14 +10,18 @@ public class PlayerManager : MonoBehaviour
     [Header("CONFIGURATION")]
     public float runSpeed = 40f;
     public float ladderSpeed = 15f;
+    public GameObject cam1;
+    public GameObject cam2;
+    public Transform levelCenter;
+    public Transform zoomOutTarget;
 
     [Header("VARIABLES")]
+    public InteractManager.Organ currentOrgan = InteractManager.Organ.none;
     float horizontalMove = 0f;
     float verticalMove = 0f;
     bool jump = false;
     bool onLadder = false;
     bool canInteract = false;
-    public InteractManager.Organ currentOrgan = InteractManager.Organ.none;
 
     [Header("COMPONENTS")]
     public Animator animController;
@@ -43,6 +47,7 @@ public class PlayerManager : MonoBehaviour
         inputMap.Gameplay.yAxis.canceled += ctx => verticalMove = 0;
         inputMap.Gameplay.Jump.started += ctx => jump = true;
         inputMap.Gameplay.Interact.started += ctx => Interact();
+        inputMap.Gameplay.SwitchCamera.started += ctx => SwitchCamera();
 
         controller = GetComponent<CharacterController2D>();
     }
@@ -91,6 +96,12 @@ public class PlayerManager : MonoBehaviour
     {
         if (canInteract)
             InteractManager.instance.InteractWith(currentOrgan);
+    }
+
+    void SwitchCamera()
+    {
+        cam1.SetActive(!cam1.activeSelf);
+        cam2.SetActive(!cam2.activeSelf);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
