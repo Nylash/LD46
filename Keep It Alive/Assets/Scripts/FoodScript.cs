@@ -37,12 +37,18 @@ public class FoodScript : MonoBehaviour
 
     public void CheckTrachea()
     {
-
+        if (LungsManager.instance.tracheaOpen)
+        {
+            LungsManager.instance.foodStucked = true;
+            StomachManager.instance.mouthOpen = false;
+            Destroy(gameObject);
+        }
     }
 
     public void StomachReached()
     {
-
+        StomachManager.instance.AbsorbFood(currentGain);
+        Destroy(gameObject);
     }
 
     public enum Food

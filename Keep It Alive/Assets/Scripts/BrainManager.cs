@@ -21,7 +21,7 @@ public class BrainManager : MonoBehaviour
     //public Text textTmp;
 
     [Header("VARIABLES")]
-    float currentStress;
+    public float currentStress;
     GameObject firstCancer;
     GameObject secondCancer;
     GameObject thirdCancer;

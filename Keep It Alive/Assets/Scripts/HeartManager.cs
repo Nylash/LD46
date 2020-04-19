@@ -11,7 +11,7 @@ public class HeartManager : MonoBehaviour
     //public Text textTmp;
 
     [Header("VARIABLES")]
-    float currentLife = 100f;
+    public float currentLife = 100f;
 
     private void Awake()
     {

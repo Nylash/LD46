@@ -22,8 +22,8 @@ public class KidneyManager : MonoBehaviour
     public bool alarmLaunched;
     public bool rightKidneyDying;
     public bool leftKidneyDying;
-    float currentMaxTime;
-    float currentTimer;
+    public float currentMaxTime;
+    public float currentTimer;
     
 
     private void Awake()

@@ -9,9 +9,8 @@ public class StomachManager : MonoBehaviour
     [Header("CONFIGURATION")]
     public float maxCapacity;
     public float timeBetweenFood;
-    public GameObject melon;
-    public GameObject chicken;
-    public GameObject cupcake;
+    public GameObject foodPrefab;
+    public Transform spawnFoodTransform;
     public float pvLossPerSecond;
 
     [Header("VARIABLES")]
@@ -33,7 +32,9 @@ public class StomachManager : MonoBehaviour
     {
         if (mouthOpen && !foodOnCD)
         {
-            //POP FOOD
+            int foodType = Random.Range(0, 3);
+            GameObject food = Instantiate(foodPrefab, spawnFoodTransform.position, Quaternion.identity);
+            food.GetComponent<FoodScript>().currentFood = (FoodScript.Food)foodType;
             foodOnCD = true;
             Invoke("ResetFoodCD", timeBetweenFood);
         }
@@ -51,6 +52,11 @@ public class StomachManager : MonoBehaviour
             currentCapacity = maxCapacity;
             HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
         }
+    }
+
+    public void AbsorbFood(float gain)
+    {
+        currentCapacity += gain;
     }
 
     void ResetFoodCD()

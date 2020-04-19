@@ -49,6 +49,9 @@ TagManager:
   - name: Organ
     uniqueID: 737888229
     locked: 0
+  - name: Food
+    uniqueID: 713250661
+    locked: 0
   - name: OrganButton
     uniqueID: 2821581595
     locked: 0

@@ -11,13 +11,16 @@ public class LungsManager : MonoBehaviour
     public float airMaxTime;
     public float pvLossPerSecond;
     public float percentageAlarm;
+    public int inputToBeUnstucked;
 
     [Header("COMPONENTS")]
     //public Text textTmp;
 
     [Header("VARIABLES")]
     public bool tracheaOpen = true;
-    float currentAir;
+    public bool foodStucked = false;
+    public int currentInputNumber;
+    public float currentAir;
     bool alarmLaunched;
 
     private void Awake()
@@ -36,13 +39,7 @@ public class LungsManager : MonoBehaviour
 
     private void Update()
     {
-        if (tracheaOpen)
-        {
-            currentAir += Time.deltaTime;
-            if (currentAir > airMaxTime)
-                currentAir = airMaxTime;
-        }
-        else
+        if (!tracheaOpen || foodStucked)
         {
             currentAir -= Time.deltaTime;
             if (currentAir <= 0f)
@@ -50,6 +47,12 @@ public class LungsManager : MonoBehaviour
                 currentAir = 0f;
                 HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
             }
+        }
+        else
+        {
+            currentAir += Time.deltaTime;
+            if (currentAir > airMaxTime)
+                currentAir = airMaxTime;
         }
         //textTmp.text = ((int)((currentAir / airMaxTime) * 100)).ToString();
         if (!alarmLaunched)
@@ -68,7 +71,12 @@ public class LungsManager : MonoBehaviour
                 CancelInvoke("Alarm");
             }
         }
-        
+    }
+
+    public void UnstuckTrachea()
+    {
+        foodStucked = false;
+        currentInputNumber = 0;
     }
 
     void Alarm()

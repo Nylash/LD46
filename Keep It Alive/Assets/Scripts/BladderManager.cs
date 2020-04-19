@@ -12,7 +12,7 @@ public class BladderManager : MonoBehaviour
 
     [Header("VARIABLES")]
     public bool peeing;
-    float currentCapacity;
+    public float currentCapacity;
 
     private void Awake()
     {

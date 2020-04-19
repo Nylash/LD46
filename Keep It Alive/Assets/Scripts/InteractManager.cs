@@ -20,10 +20,16 @@ public class InteractManager : MonoBehaviour
         switch (organ)
         {
             case Organ.lungs:
-                if (!PlayerManager.instance.animController.GetBool("Interacting"))
+                if (LungsManager.instance.foodStucked)
                 {
-                    PlayerManager.instance.animController.SetTrigger("StartInteracting");
-                    PlayerManager.instance.animController.SetBool("Interacting", true);
+                    if (!PlayerManager.instance.animController.GetBool("Interacting"))
+                    {
+                        PlayerManager.instance.animController.SetTrigger("StartInteracting");
+                        PlayerManager.instance.animController.SetBool("Interacting", true);
+                    }
+                    LungsManager.instance.currentInputNumber += 1;
+                    if (LungsManager.instance.currentInputNumber >= LungsManager.instance.inputToBeUnstucked)
+                        LungsManager.instance.UnstuckTrachea();
                 }
                 break;
             case Organ.bladder:
