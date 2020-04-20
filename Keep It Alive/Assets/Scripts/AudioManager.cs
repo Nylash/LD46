@@ -6,9 +6,6 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public AudioClip testClip;
-    [Range(0f, 1f)] public float testVolume;
-
     [Header("ORGANS SOUNDS")]
     public AudioClip breath;
     [Range(0f, 1f)] public float breathVolume;
@@ -47,6 +44,7 @@ public class AudioManager : MonoBehaviour
     [Header("SOURCES")]
     public AudioSource foodSource;
     public AudioSource musicSource;
+    public AudioSource[] allSources;
 
     private void Awake()
     {
@@ -58,9 +56,8 @@ public class AudioManager : MonoBehaviour
         musicSource.volume = musicVolume;
     }
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-            foodSource.PlayOneShot(testClip, testVolume);
+        allSources = GameObject.FindObjectsOfType<AudioSource>();
     }
 }

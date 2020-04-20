@@ -47,14 +47,12 @@ public class TutoScript : MonoBehaviour
                     hintBind.enabled = false;
             }
         }
-        else
-        {
-            if (index != 0)
-            {
-                index = 0;
-                tutoRenderer.sprite = tutoSprites[0];
-                hintBind.enabled = false;
-            }   
-        }
+    }
+
+    public void ResetTuto()
+    {
+        index = 0;
+        tutoRenderer.sprite = tutoSprites[0];
+        hintBind.enabled = false;
     }
 }

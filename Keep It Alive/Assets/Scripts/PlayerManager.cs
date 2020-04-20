@@ -27,6 +27,7 @@ public class PlayerManager : MonoBehaviour
     public Canvas pauseMenu;
     public Animator animController;
     public CharacterController2D controller;
+    public GameObject objectTutoScript;
     InputMap inputMap;
 
     private void OnEnable() => inputMap.Gameplay.Enable();
@@ -124,6 +125,25 @@ public class PlayerManager : MonoBehaviour
             pause = !pause;
             pauseMenu.enabled = pause;
             Time.timeScale = (pause ? 0 : 1);
+            if (!pause)
+            {
+                objectTutoScript.GetComponent<TutoScript>().ResetTuto();
+                foreach (AudioSource item in AudioManager.instance.allSources)
+                {
+                    if (item != AudioManager.instance.musicSource)
+                        item.Play();
+                }
+                AudioManager.instance.musicSource.volume *= 2;
+            }
+            else
+            {
+                foreach (AudioSource item in AudioManager.instance.allSources)
+                {
+                    if(item != AudioManager.instance.musicSource)
+                        item.Pause();
+                }
+                AudioManager.instance.musicSource.volume /= 2;
+            }                
         }
     }
 
