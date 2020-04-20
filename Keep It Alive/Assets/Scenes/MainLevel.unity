@@ -6806,7 +6806,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d4460a47dc29c4d418fe699349bc556c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -6904,6 +6904,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2948f409d48bf994abee19bd75b64589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testClip: {fileID: 0}
+  testVolume: 0.628
   breath: {fileID: 0}
   breathVolume: 0
   burp: {fileID: 0}
