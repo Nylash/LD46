@@ -101,18 +101,21 @@ public class BrainManager : MonoBehaviour
         if(currentStress < firstCancerSpawnPercentage && firstCancer != null)
         {
             firstCancer.GetComponent<Animator>().SetTrigger("Destroy");
+            firstCancer = null;
             availableCancerPositions.Add(firstCancerSpot);
             firstCancerSpot = null;
         }
         if (currentStress < secondCancerSpawnPercentage && secondCancer != null)
         {
-            firstCancer.GetComponent<Animator>().SetTrigger("Destroy");
+            secondCancer.GetComponent<Animator>().SetTrigger("Destroy");
+            secondCancer = null;
             availableCancerPositions.Add(secondCancerSpot);
             secondCancerSpot = null;
         }
         if (currentStress < thirdCancerSpawnPercentage && thirdCancer != null)
         {
-            firstCancer.GetComponent<Animator>().SetTrigger("Destroy");
+            thirdCancer.GetComponent<Animator>().SetTrigger("Destroy");
+            thirdCancer = null;
             availableCancerPositions.Add(thirdCancerSpot);
             thirdCancerSpot = null;
         }

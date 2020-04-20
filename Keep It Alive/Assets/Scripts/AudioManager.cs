@@ -31,6 +31,8 @@ public class AudioManager : MonoBehaviour
     [Range(0f, 1f)] public float leverCloseVolume;
     public AudioClip buzz;
     [Range(0f, 1f)] public float buzzVolume;
+    public AudioClip buzz2;
+    [Range(0f, 1f)] public float buzz2Volume;
 
     [Header("PLAYER SOUNDS")]
     public AudioClip footStep_Player;
@@ -53,7 +55,8 @@ public class AudioManager : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
 
-        musicSource.PlayOneShot(music, musicVolume);
+        musicSource.clip = music;
+        musicSource.volume = musicVolume;
     }
 
     private void Update()

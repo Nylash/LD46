@@ -191,8 +191,15 @@ public class InteractManager : MonoBehaviour
 
     void PlayBuzzSound(AudioSource source)
     {
-        if(!source.isPlaying)
-            source.PlayOneShot(AudioManager.instance.buzz, AudioManager.instance.buzzVolume);
+        if (!source.isPlaying)
+        {
+            int i = Random.Range(0, 2);
+            if(i==0)
+                source.PlayOneShot(AudioManager.instance.buzz, AudioManager.instance.buzzVolume);
+            else
+                source.PlayOneShot(AudioManager.instance.buzz2, AudioManager.instance.buzz2Volume);
+        }
+            
     }
 
     public enum Organ
