@@ -12,6 +12,8 @@ public class SplashScreenScript : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.visible = false;
+
         inputMap = new InputMap();
 
         inputMap.Gameplay.Start.started += ctx => SceneManager.LoadScene("MainLevel");

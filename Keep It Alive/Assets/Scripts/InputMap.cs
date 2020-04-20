@@ -81,6 +81,14 @@ public class @InputMap : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""7cb1bc47-ac89-48f2-b61a-c30d48fa4b16"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -112,7 +120,7 @@ public class @InputMap : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/leftStick/x"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""xAxis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -369,6 +377,28 @@ public class @InputMap : IInputActionCollection, IDisposable
                     ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0b0057f-2023-4553-9aef-c32c55a95817"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e21c22a-dd41-4e9c-a0c4-ae8c01ef50b9"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -396,6 +426,7 @@ public class @InputMap : IInputActionCollection, IDisposable
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         m_Gameplay_Quit = m_Gameplay.FindAction("Quit", throwIfNotFound: true);
         m_Gameplay_Start = m_Gameplay.FindAction("Start", throwIfNotFound: true);
+        m_Gameplay_Menu = m_Gameplay.FindAction("Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -453,6 +484,7 @@ public class @InputMap : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Pause;
     private readonly InputAction m_Gameplay_Quit;
     private readonly InputAction m_Gameplay_Start;
+    private readonly InputAction m_Gameplay_Menu;
     public struct GameplayActions
     {
         private @InputMap m_Wrapper;
@@ -465,6 +497,7 @@ public class @InputMap : IInputActionCollection, IDisposable
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputAction @Quit => m_Wrapper.m_Gameplay_Quit;
         public InputAction @Start => m_Wrapper.m_Gameplay_Start;
+        public InputAction @Menu => m_Wrapper.m_Gameplay_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -498,6 +531,9 @@ public class @InputMap : IInputActionCollection, IDisposable
                 @Start.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStart;
                 @Start.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStart;
                 @Start.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStart;
+                @Menu.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMenu;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -526,6 +562,9 @@ public class @InputMap : IInputActionCollection, IDisposable
                 @Start.started += instance.OnStart;
                 @Start.performed += instance.OnStart;
                 @Start.canceled += instance.OnStart;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
             }
         }
     }
@@ -558,5 +597,6 @@ public class @InputMap : IInputActionCollection, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnQuit(InputAction.CallbackContext context);
         void OnStart(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
 }

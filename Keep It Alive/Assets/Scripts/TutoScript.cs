@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TutoScript : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class TutoScript : MonoBehaviour
         inputMap = new InputMap();
 
         inputMap.Gameplay.yAxis.started += ctx => Tuto(ctx.ReadValue<float>());
+        inputMap.Gameplay.Menu.started += ctx => Menu();
     }
 
     void Tuto(float ctx)
@@ -47,6 +49,16 @@ public class TutoScript : MonoBehaviour
                     hintBind.enabled = false;
             }
         }
+    }
+
+    void Menu()
+    {
+        if (pause.enabled)
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene("SplashScene");
+        }
+            
     }
 
     public void ResetTuto()
