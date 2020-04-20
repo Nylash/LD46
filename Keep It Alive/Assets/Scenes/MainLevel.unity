@@ -2240,12 +2240,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &147391272 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3848736173130237004, guid: 4b618168f8cf86d4e855cf3b7b95d3f1,
-    type: 3}
-  m_PrefabInstance: {fileID: 290333085}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &155457571
 GameObject:
   m_ObjectHideFlags: 0
@@ -3153,6 +3147,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 944893112511146877, guid: 713d35a48006a1d428414c21a315318a,
     type: 3}
   m_PrefabInstance: {fileID: 282743984}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &287193941 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -8854132646948017703, guid: 9c5293be87b44b94193e2f21e1d4f5b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7740257149944602007}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &290333085
 PrefabInstance:
@@ -6904,6 +6904,8 @@ MonoBehaviour:
   leverCloseVolume: 0.2
   buzz: {fileID: 8300000, guid: 980fe1f587d6e0846a97e531327d4fd3, type: 3}
   buzzVolume: 0.2
+  buzz2: {fileID: 0}
+  buzz2Volume: 0
   footStep_Player: {fileID: 8300000, guid: c1cf9a89ebaf3164fa0b743d20ea5056, type: 3}
   footStepVolume: 0.1
   jump: {fileID: 8300000, guid: dc99e1a0c026ea848b13ce1394a411eb, type: 3}
@@ -11143,6 +11145,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 944893112511146877, guid: 713d35a48006a1d428414c21a315318a,
     type: 3}
   m_PrefabInstance: {fileID: 946304794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1211858954 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8767988709153389155, guid: 9885109a66dbd8f4c9ab7f85953779d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3417704922364981353}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1215633972
 GameObject:
@@ -18168,12 +18176,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &2076553781 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5210417102414030059, guid: 4b618168f8cf86d4e855cf3b7b95d3f1,
-    type: 3}
-  m_PrefabInstance: {fileID: 290333085}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2092333295
 GameObject:
   m_ObjectHideFlags: 0
@@ -18828,7 +18830,7 @@ PrefabInstance:
     - target: {fileID: 4018822973002028532, guid: dd87d0e39280ffd468499781447f1cac,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.061
+      value: 13.04
       objectReference: {fileID: 0}
     - target: {fileID: 4018822973002028532, guid: dd87d0e39280ffd468499781447f1cac,
         type: 3}
@@ -19129,12 +19131,12 @@ PrefabInstance:
         type: 3}
       propertyPath: rightKidneyButton
       value: 
-      objectReference: {fileID: 2076553781}
+      objectReference: {fileID: 1211858954}
     - target: {fileID: 3370454871153935200, guid: 7a67bf9da0b115d4190ae930abc63754,
         type: 3}
       propertyPath: leftKidneyButton
       value: 
-      objectReference: {fileID: 147391272}
+      objectReference: {fileID: 287193941}
     - target: {fileID: 3370454871153935200, guid: 7a67bf9da0b115d4190ae930abc63754,
         type: 3}
       propertyPath: mouthButton
@@ -19399,12 +19401,12 @@ PrefabInstance:
     - target: {fileID: 8827221259717852469, guid: ff4d73b5bc6336943b97f0bc448e37d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.571
+      value: 0.706
       objectReference: {fileID: 0}
     - target: {fileID: 8827221259717852469, guid: ff4d73b5bc6336943b97f0bc448e37d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.571
+      value: 8.55
       objectReference: {fileID: 0}
     - target: {fileID: 8827221259717852469, guid: ff4d73b5bc6336943b97f0bc448e37d1,
         type: 3}
