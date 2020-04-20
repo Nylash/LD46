@@ -6881,9 +6881,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2948f409d48bf994abee19bd75b64589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testClip: {fileID: 8300000, guid: 526cd4b3125914f4a995c3bcd5b79473, type: 3}
-  testVolume: 1
-  breath: {fileID: 8300000, guid: 0c56ccba1d0ed7f43b30ce3c0dff2a20, type: 3}
+  testClip: {fileID: 8300000, guid: 1f2006995e0ef0144bc5da079c9f37b0, type: 3}
+  testVolume: 0.3
+  breath: {fileID: 8300000, guid: cbce4f964a649c342b545a90ea1bf3de, type: 3}
   breathVolume: 0.5
   burp: {fileID: 8300000, guid: f76ccdba8894a70479e4600fd3e71b87, type: 3}
   burpVolume: 0.3
@@ -6895,9 +6895,9 @@ MonoBehaviour:
   eat2Volume: 0.3
   stomachSound: {fileID: 8300000, guid: 7f399d44226fb04438c510d0fd0fc3a8, type: 3}
   stomachSoundVolume: 0.3
-  heart: {fileID: 8300000, guid: 526cd4b3125914f4a995c3bcd5b79473, type: 3}
-  heartVolumeSafe: 0.5
-  heartVolumeDanger: 1
+  heart: {fileID: 8300000, guid: 8ed84e1904f70a34b949857ab1faca3c, type: 3}
+  heartVolumeSafe: 0.2
+  heartVolumeDanger: 0.7
   leverOpen: {fileID: 8300000, guid: cdf0b1eaf3b36584bbad7368892b1b70, type: 3}
   leverOpenVolume: 0.2
   leverClose: {fileID: 8300000, guid: c41e77501fa89c04eaa53af6d4d41eff, type: 3}
@@ -6909,7 +6909,7 @@ MonoBehaviour:
   footStep_Player: {fileID: 8300000, guid: c1cf9a89ebaf3164fa0b743d20ea5056, type: 3}
   footStepVolume: 0.1
   jump: {fileID: 8300000, guid: dc99e1a0c026ea848b13ce1394a411eb, type: 3}
-  jumpVolume: 0.3
+  jumpVolume: 0.1
   music: {fileID: 8300000, guid: 2489d29d0a3b0a74da5a5be6846f4d4d, type: 3}
   musicVolume: 0.15
   foodSource: {fileID: 650892395}
