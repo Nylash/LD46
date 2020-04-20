@@ -37,33 +37,32 @@ public class StomachManager : MonoBehaviour
     {
         if (!HeartManager.instance.defeat)
         {
-
+            if (mouthOpen && !foodOnCD)
+            {
+                int foodType = Random.Range(0, 3);
+                currentFood = Instantiate(foodPrefab, spawnFoodTransform.position, Quaternion.identity);
+                currentFood.GetComponent<FoodScript>().currentFood = (FoodScript.Food)foodType;
+                foodOnCD = true;
+            }
+            if (currentCapacity > 0)
+            {
+                float transferAmount = Time.deltaTime;
+                currentCapacity -= transferAmount;
+                float excess = BladderManager.instance.TransfertToBladder(transferAmount);
+                currentCapacity += excess;
+            }
+            if (currentCapacity <= 0f)
+            {
+                currentCapacity = 0f;
+                HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
+            }
+            if (currentCapacity >= maxCapacity)
+            {
+                currentCapacity = maxCapacity;
+                HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
+            }
+            filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
         }
-        if (mouthOpen && !foodOnCD)
-        {
-            int foodType = Random.Range(0, 3);
-            currentFood = Instantiate(foodPrefab, spawnFoodTransform.position, Quaternion.identity);
-            currentFood.GetComponent<FoodScript>().currentFood = (FoodScript.Food)foodType;
-            foodOnCD = true;
-        }
-        if(currentCapacity > 0)
-        {
-            float transferAmount = Time.deltaTime;
-            currentCapacity -= transferAmount;
-            float excess = BladderManager.instance.TransfertToBladder(transferAmount);
-            currentCapacity += excess;
-        }
-        if (currentCapacity <= 0f)
-        {
-            currentCapacity = 0f;
-            HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
-        }
-        if (currentCapacity >= maxCapacity)
-        {
-            currentCapacity = maxCapacity;
-            HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
-        }
-        filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
     }
 
     public void AbsorbFood(float gain)

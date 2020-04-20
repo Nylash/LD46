@@ -43,39 +43,38 @@ public class LungsManager : MonoBehaviour
     {
         if (!HeartManager.instance.defeat)
         {
-
-        }
-        if (!tracheaOpen || foodStucked)
-        {
-            currentAir -= Time.deltaTime;
-            if (currentAir <= 0f)
+            if (!tracheaOpen || foodStucked)
             {
-                currentAir = 0f;
-                HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
+                currentAir -= Time.deltaTime;
+                if (currentAir <= 0f)
+                {
+                    currentAir = 0f;
+                    HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
+                }
             }
-        }
-        else
-        {
-            currentAir += Time.deltaTime;
-            if (currentAir > airMaxTime)
-                currentAir = airMaxTime;
-        }
-        filling1.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
-        filling2.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
-        if (!alarmLaunched)
-        {
-            if (((currentAir / airMaxTime) * 100) <= percentageAlarm)
+            else
             {
-                alarmLaunched = true;
-                InvokeRepeating("Alarm", 0, .5f);
+                currentAir += Time.deltaTime;
+                if (currentAir > airMaxTime)
+                    currentAir = airMaxTime;
             }
-        }
-        else
-        {
-            if (((currentAir / airMaxTime) * 100) > percentageAlarm)
+            filling1.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
+            filling2.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
+            if (!alarmLaunched)
             {
-                alarmLaunched = false;
-                CancelInvoke("Alarm");
+                if (((currentAir / airMaxTime) * 100) <= percentageAlarm)
+                {
+                    alarmLaunched = true;
+                    InvokeRepeating("Alarm", 0, .5f);
+                }
+            }
+            else
+            {
+                if (((currentAir / airMaxTime) * 100) > percentageAlarm)
+                {
+                    alarmLaunched = false;
+                    CancelInvoke("Alarm");
+                }
             }
         }
     }

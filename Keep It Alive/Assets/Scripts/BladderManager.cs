@@ -34,24 +34,23 @@ public class BladderManager : MonoBehaviour
     {
         if (!HeartManager.instance.defeat)
         {
-
-        }
-        if (full)
-        {
-            currentTimer += Time.deltaTime;
-            if(currentTimer >= timeBeforeKillKidneyWhenFull)
+            if (full)
             {
-                KidneyManager.instance.KillKidney();
-                currentTimer = 0;
+                currentTimer += Time.deltaTime;
+                if (currentTimer >= timeBeforeKillKidneyWhenFull)
+                {
+                    KidneyManager.instance.KillKidney();
+                    currentTimer = 0;
+                }
             }
+            if (peeing)
+            {
+                currentCapacity -= lossPerSecondWhenOpen * Time.deltaTime;
+                if (currentCapacity <= 0f)
+                    currentCapacity = 0;
+            }
+            filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
         }
-        if (peeing)
-        {
-            currentCapacity -= lossPerSecondWhenOpen * Time.deltaTime;
-            if (currentCapacity <= 0f)
-                currentCapacity = 0;
-        }
-        filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
     }
 
     public float TransfertToBladder(float amount)

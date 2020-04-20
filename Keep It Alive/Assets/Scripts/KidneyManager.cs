@@ -29,12 +29,11 @@ public class KidneyManager : MonoBehaviour
     {
         if (!HeartManager.instance.defeat)
         {
-
+            if (leftKidneyDying)
+                HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
+            if (rightKidneyDying)
+                HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
         }
-        if (leftKidneyDying)
-            HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
-        if (rightKidneyDying)
-            HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
     }
 
     public void KillKidney()

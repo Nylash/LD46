@@ -51,59 +51,56 @@ public class PlayerManager : MonoBehaviour
         inputMap.Gameplay.Pause.started += ctx => Pause();
 
         controller = GetComponent<CharacterController2D>();
-
-        Invoke("SwitchCamera", 1.5f);
     }
 
     private void FixedUpdate()
     {
         if (!HeartManager.instance.defeat)
         {
-
-        }
-        if (!animController.GetBool("Interacting"))
-        {
-            if (onLadderTrigger)
+            if (!animController.GetBool("Interacting"))
             {
-                if (verticalMove > .1f && !onLadder)
+                if (onLadderTrigger)
                 {
-                    onLadder = true;
-                    animController.SetBool("Climbing", true);
-                    animController.SetTrigger("StartClimbing");
-                }  
-            }
-            if (onLadder)
-            {
-                if (!animController.GetBool("Climbing"))
-                    animController.SetBool("Climbing", true);
-                if (!jump)
+                    if (verticalMove > .1f && !onLadder)
+                    {
+                        onLadder = true;
+                        animController.SetBool("Climbing", true);
+                        animController.SetTrigger("StartClimbing");
+                    }
+                }
+                if (onLadder)
                 {
-                    controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, verticalMove * ladderSpeed * Time.fixedDeltaTime);
+                    if (!animController.GetBool("Climbing"))
+                        animController.SetBool("Climbing", true);
+                    if (!jump)
+                    {
+                        controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, verticalMove * ladderSpeed * Time.fixedDeltaTime);
+                    }
+                    else
+                    {
+                        animController.SetBool("Climbing", false);
+                        controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, jump, true);
+                        jump = false;
+                        onLadder = false;
+                    }
                 }
                 else
                 {
-                    animController.SetBool("Climbing", false);
-                    controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, jump, true);
+                    if (animController.GetBool("Climbing"))
+                        animController.SetBool("Climbing", false);
+                    if (controller.grounded && horizontalMove != 0)
+                    {
+                        animController.SetBool("Running", true);
+                        animController.speed = Mathf.Lerp(.5f, 1f, Mathf.Abs(horizontalMove));
+                    }
+                    else
+                    {
+                        animController.SetBool("Running", false);
+                        animController.speed = 1;
+                    }
+                    controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, jump);
                     jump = false;
-                    onLadder = false;
                 }
-            }
-            else
-            {
-                if (animController.GetBool("Climbing"))
-                    animController.SetBool("Climbing", false);
-                if (controller.grounded && horizontalMove != 0)
-                {
-                    animController.SetBool("Running", true);
-                    animController.speed = Mathf.Lerp(.5f, 1f, Mathf.Abs(horizontalMove));
-                }
-                else
-                {
-                    animController.SetBool("Running", false);
-                    animController.speed = 1;
-                }
-                controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, jump);
-                jump = false;
             }
         }
     }
@@ -114,18 +111,20 @@ public class PlayerManager : MonoBehaviour
             InteractManager.instance.InteractWith(currentOrgan);
     }
 
-    void SwitchCamera()
+    public void SwitchCamera()
     {
-        CancelInvoke("SwitchCamera");
         cam1.SetActive(!cam1.activeSelf);
         cam2.SetActive(!cam2.activeSelf);
     }
 
     void Pause()
     {
-        pause = !pause;
-        pauseMenu.enabled = pause;
-        Time.timeScale = (pause ? 0 : 1);
+        if (!HeartManager.instance.defeat)
+        {
+            pause = !pause;
+            pauseMenu.enabled = pause;
+            Time.timeScale = (pause ? 0 : 1);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

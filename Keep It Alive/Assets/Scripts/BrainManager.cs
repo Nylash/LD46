@@ -48,40 +48,39 @@ public class BrainManager : MonoBehaviour
     {
         if (!HeartManager.instance.defeat)
         {
-
+            currentStress += gainPerSecond * Time.deltaTime;
+            if (currentStress >= firstCancerSpawnPercentage && firstCancer == null)
+            {
+                int index = Random.Range(0, availableCancerPositions.Count);
+                firstCancer = Instantiate(cancerPrefab, availableCancerPositions[index].position, cancerPrefab.transform.rotation);
+                firstCancerSpot = availableCancerPositions[index];
+                availableCancerPositions.RemoveAt(index);
+            }
+            if (currentStress >= secondCancerSpawnPercentage && secondCancer == null)
+            {
+                int index = Random.Range(0, availableCancerPositions.Count);
+                secondCancer = Instantiate(cancerPrefab, availableCancerPositions[index].position, cancerPrefab.transform.rotation);
+                secondCancerSpot = availableCancerPositions[index];
+                availableCancerPositions.RemoveAt(index);
+            }
+            if (currentStress >= thirdCancerSpawnPercentage && thirdCancer == null)
+            {
+                int index = Random.Range(0, availableCancerPositions.Count);
+                thirdCancer = Instantiate(cancerPrefab, availableCancerPositions[index].position, cancerPrefab.transform.rotation);
+                thirdCancerSpot = availableCancerPositions[index];
+                availableCancerPositions.RemoveAt(index);
+            }
+            if (currentStress >= 100f)
+            {
+                currentStress = 100f;
+                HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
+            }
+            filling.SetFloat("Vector1_B2746C0A", currentStress / 100);
+            if (currentStress != 0f)
+                InteractManager.instance.brainButton.SetTrigger("Open");
+            else
+                InteractManager.instance.brainButton.SetTrigger("Close");
         }
-        currentStress += gainPerSecond * Time.deltaTime;
-        if(currentStress >= firstCancerSpawnPercentage && firstCancer == null)
-        {
-            int index = Random.Range(0,availableCancerPositions.Count);
-            firstCancer = Instantiate(cancerPrefab, availableCancerPositions[index].position, cancerPrefab.transform.rotation);
-            firstCancerSpot = availableCancerPositions[index];
-            availableCancerPositions.RemoveAt(index);
-        }
-        if (currentStress >= secondCancerSpawnPercentage && secondCancer == null)
-        {
-            int index = Random.Range(0, availableCancerPositions.Count);
-            secondCancer = Instantiate(cancerPrefab, availableCancerPositions[index].position, cancerPrefab.transform.rotation);
-            secondCancerSpot = availableCancerPositions[index];
-            availableCancerPositions.RemoveAt(index);
-        }
-        if (currentStress >= thirdCancerSpawnPercentage && thirdCancer == null)
-        {
-            int index = Random.Range(0, availableCancerPositions.Count);
-            thirdCancer = Instantiate(cancerPrefab, availableCancerPositions[index].position, cancerPrefab.transform.rotation);
-            thirdCancerSpot = availableCancerPositions[index];
-            availableCancerPositions.RemoveAt(index);
-        }
-        if (currentStress >= 100f)
-        {
-            currentStress = 100f;
-            HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
-        }
-        filling.SetFloat("Vector1_B2746C0A", currentStress/100);
-        if (currentStress != 0f)
-            InteractManager.instance.brainButton.SetTrigger("Open");
-        else
-            InteractManager.instance.brainButton.SetTrigger("Close");
     }
 
     public void ReduceStress()
