@@ -35,7 +35,6 @@ public class HeartManager : MonoBehaviour
 
         anim = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
-        source.clip = AudioManager.instance.heart;
         source.volume = AudioManager.instance.heartVolumeSafe;
     }
 

@@ -55,7 +55,6 @@ public class AudioManager : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
 
-        musicSource.clip = music;
         musicSource.volume = musicVolume;
     }
 
