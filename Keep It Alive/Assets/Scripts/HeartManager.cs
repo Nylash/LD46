@@ -11,6 +11,7 @@ public class HeartManager : MonoBehaviour
     public GameObject cam1;
     public GameObject cam2;
     public Canvas endScreen;
+    public SpriteRenderer spriteRender;
     Material filling;
 
     [Header("VARIABLES")]
@@ -27,7 +28,7 @@ public class HeartManager : MonoBehaviour
 
     private void Start()
     {
-        filling = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material;
+        filling = spriteRender.material;
         filling.SetFloat("Vector1_B2746C0A", currentLife / 100);
     }
 

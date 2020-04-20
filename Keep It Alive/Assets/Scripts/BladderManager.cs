@@ -12,6 +12,7 @@ public class BladderManager : MonoBehaviour
     public float timeBeforeKillKidneyWhenFull;
 
     [Header("COMPONENTS")]
+    public SpriteRenderer render;
     Material filling;
 
     [Header("VARIABLES")]
@@ -27,7 +28,8 @@ public class BladderManager : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
 
-        filling = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material;
+        filling = render.material;
+        filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
     }
 
     private void Update()

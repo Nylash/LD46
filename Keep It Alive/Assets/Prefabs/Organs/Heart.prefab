@@ -46,7 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a74d1f1d0b67914da335189793f9a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam1: {fileID: 0}
+  cam2: {fileID: 0}
+  endScreen: {fileID: 0}
+  spriteRender: {fileID: 16159057237791458}
   currentLife: 100
+  defeat: 0
 --- !u!95 &1481590963
 Animator:
   serializedVersion: 3

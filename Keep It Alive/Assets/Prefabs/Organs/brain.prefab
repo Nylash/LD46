@@ -139,6 +139,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  render: {fileID: 6782420710039040428}
   currentStress: 0
   availableCancerPositions: []
 --- !u!95 &1178353023

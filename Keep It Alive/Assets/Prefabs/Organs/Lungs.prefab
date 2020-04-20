@@ -294,6 +294,8 @@ MonoBehaviour:
   pvLossPerSecond: 1
   percentageAlarm: 25
   inputToBeUnstucked: 15
+  renderer1: {fileID: 4552394517183905613}
+  renderer2: {fileID: 2643943985435149110}
   tracheaOpen: 1
   foodStucked: 0
   currentInputNumber: 0

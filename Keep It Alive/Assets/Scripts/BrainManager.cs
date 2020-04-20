@@ -18,6 +18,7 @@ public class BrainManager : MonoBehaviour
     public List<Transform> cancerPositions = new List<Transform>();
 
     [Header("COMPONENTS")]
+    public SpriteRenderer render;
     Material filling;
 
     [Header("VARIABLES")]
@@ -40,7 +41,8 @@ public class BrainManager : MonoBehaviour
 
     private void Start()
     {
-        filling = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material;
+        filling = render.material;
+        filling.SetFloat("Vector1_B2746C0A", currentStress / 100);
         availableCancerPositions.AddRange(cancerPositions);
     }
 

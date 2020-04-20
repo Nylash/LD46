@@ -208,17 +208,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa9a42ad0d514940ac4f8923548978f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTimeBeforeEnd: 100000
-  maxTimeBeforeEnd: 100000
   pvLossPerSecond: 1
-  percentageAlarm: 25
   inputToBeChanged: 15
   currentInputNumber: 0
-  alarmLaunched: 0
   rightKidneyDying: 0
   leftKidneyDying: 0
-  currentMaxTime: 0
-  currentTimer: 0
 --- !u!95 &856111110
 Animator:
   serializedVersion: 3

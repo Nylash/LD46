@@ -14,6 +14,8 @@ public class LungsManager : MonoBehaviour
     public int inputToBeUnstucked;
 
     [Header("COMPONENTS")]
+    public SpriteRenderer renderer1;
+    public SpriteRenderer renderer2;
     Material filling1;
     Material filling2;
 
@@ -35,8 +37,10 @@ public class LungsManager : MonoBehaviour
     private void Start()
     {
         currentAir = airMaxTime;
-        filling1 = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material;
-        filling2 = transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().material;
+        filling1 = renderer1.material;
+        filling2 = renderer2.material;
+        filling1.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
+        filling2.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
     }
 
     private void Update()
