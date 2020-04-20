@@ -18674,6 +18674,11 @@ PrefabInstance:
       propertyPath: spawnFoodTransform
       value: 
       objectReference: {fileID: 1909773831}
+    - target: {fileID: 6723421798024304488, guid: 181f27df11d59ef4abab6b3a192aa70c,
+        type: 3}
+      propertyPath: timeBetweenFood
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 181f27df11d59ef4abab6b3a192aa70c, type: 3}
 --- !u!1001 &5511288889927403191

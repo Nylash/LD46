@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6ae051ba424a040a613d93bd2ea764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gainWithMelon: 30
-  gainWithChicken: 40
+  gainWithMelon: 25
+  gainWithChicken: 30
   gainWithCupcake: 20
   melonSprite: {fileID: 21300000, guid: c260a51a1d0f1c34e8932a9de0f9498d, type: 3}
   chickenSprite: {fileID: 21300000, guid: 019be991bafcf854fbfd6364d0fd97d7, type: 3}
