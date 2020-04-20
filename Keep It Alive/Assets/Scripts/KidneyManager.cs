@@ -80,6 +80,7 @@ public class KidneyManager : MonoBehaviour
         rightKidneyDying = false;
         InteractManager.instance.rightKidneyButton.SetTrigger("Close");
         animR.SetBool("Danger", false);
+        BladderManager.instance.currentTimer = 0;
     }
 
     public void NewLeftKidney()
@@ -88,5 +89,6 @@ public class KidneyManager : MonoBehaviour
         leftKidneyDying = false;
         InteractManager.instance.leftKidneyButton.SetTrigger("Close");
         animL.SetBool("Danger", false);
+        BladderManager.instance.currentTimer = 0;
     }
 }
