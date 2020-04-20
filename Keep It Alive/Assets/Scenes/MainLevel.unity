@@ -2240,6 +2240,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &147391272 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3848736173130237004, guid: 4b618168f8cf86d4e855cf3b7b95d3f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 290333085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &155457571
 GameObject:
   m_ObjectHideFlags: 0
@@ -6837,35 +6843,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2948f409d48bf994abee19bd75b64589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testClip: {fileID: 0}
-  testVolume: 0.628
-  breath: {fileID: 0}
-  breathVolume: 0
-  burp: {fileID: 0}
-  burpVolume: 0
-  cough: {fileID: 0}
-  coughVolume: 0
-  eat1: {fileID: 0}
-  eat1Volume: 0
-  eat2: {fileID: 0}
-  eat2Volume: 0
-  stomachSound: {fileID: 0}
-  stomachSoundVolume: 0
-  heart: {fileID: 0}
-  heartVolumeSafe: 0
-  heartVolumeDanger: 0
-  leverOpen: {fileID: 0}
-  leverOpenVolume: 0
-  leverClose: {fileID: 0}
-  leverCloseVolume: 0
-  buzz: {fileID: 0}
-  buzzVolume: 0
-  footStep_Player: {fileID: 0}
-  footStepVolume: 0
-  jump: {fileID: 0}
-  jumpVolume: 0
-  music: {fileID: 0}
-  musicVolume: 0
+  testClip: {fileID: 8300000, guid: 526cd4b3125914f4a995c3bcd5b79473, type: 3}
+  testVolume: 1
+  breath: {fileID: 8300000, guid: 0c56ccba1d0ed7f43b30ce3c0dff2a20, type: 3}
+  breathVolume: 0.5
+  burp: {fileID: 8300000, guid: f76ccdba8894a70479e4600fd3e71b87, type: 3}
+  burpVolume: 0.3
+  cough: {fileID: 8300000, guid: 1f2006995e0ef0144bc5da079c9f37b0, type: 3}
+  coughVolume: 0.3
+  eat1: {fileID: 8300000, guid: 1a82d696e932b514a8ded3aedae56080, type: 3}
+  eat1Volume: 0.3
+  eat2: {fileID: 8300000, guid: 3f740163bfdb535479680e1fa2519c5a, type: 3}
+  eat2Volume: 0.3
+  stomachSound: {fileID: 8300000, guid: 7f399d44226fb04438c510d0fd0fc3a8, type: 3}
+  stomachSoundVolume: 0.3
+  heart: {fileID: 8300000, guid: 526cd4b3125914f4a995c3bcd5b79473, type: 3}
+  heartVolumeSafe: 0.5
+  heartVolumeDanger: 1
+  leverOpen: {fileID: 8300000, guid: cdf0b1eaf3b36584bbad7368892b1b70, type: 3}
+  leverOpenVolume: 0.2
+  leverClose: {fileID: 8300000, guid: c41e77501fa89c04eaa53af6d4d41eff, type: 3}
+  leverCloseVolume: 0.2
+  buzz: {fileID: 8300000, guid: 980fe1f587d6e0846a97e531327d4fd3, type: 3}
+  buzzVolume: 0.2
+  footStep_Player: {fileID: 8300000, guid: c1cf9a89ebaf3164fa0b743d20ea5056, type: 3}
+  footStepVolume: 0.1
+  jump: {fileID: 8300000, guid: dc99e1a0c026ea848b13ce1394a411eb, type: 3}
+  jumpVolume: 0.3
+  music: {fileID: 8300000, guid: 2489d29d0a3b0a74da5a5be6846f4d4d, type: 3}
+  musicVolume: 0.15
   foodSource: {fileID: 650892395}
   musicSource: {fileID: 650892394}
 --- !u!4 &650892397
@@ -18106,6 +18112,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2076553781 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5210417102414030059, guid: 4b618168f8cf86d4e855cf3b7b95d3f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 290333085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2092333295
 GameObject:
   m_ObjectHideFlags: 0
@@ -19061,12 +19073,12 @@ PrefabInstance:
         type: 3}
       propertyPath: rightKidneyButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2076553781}
     - target: {fileID: 3370454871153935200, guid: 7a67bf9da0b115d4190ae930abc63754,
         type: 3}
       propertyPath: leftKidneyButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 147391272}
     - target: {fileID: 3370454871153935200, guid: 7a67bf9da0b115d4190ae930abc63754,
         type: 3}
       propertyPath: mouthButton
