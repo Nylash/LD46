@@ -100,24 +100,24 @@ public class BrainManager : MonoBehaviour
         currentStress -= stressReductionPerInput;
         if(currentStress < firstCancerSpawnPercentage && firstCancer != null)
         {
-            Destroy(firstCancer);
+            firstCancer.GetComponent<Animator>().SetTrigger("Destroy");
             availableCancerPositions.Add(firstCancerSpot);
             firstCancerSpot = null;
         }
         if (currentStress < secondCancerSpawnPercentage && secondCancer != null)
         {
-            Destroy(secondCancer);
+            firstCancer.GetComponent<Animator>().SetTrigger("Destroy");
             availableCancerPositions.Add(secondCancerSpot);
             secondCancerSpot = null;
         }
         if (currentStress < thirdCancerSpawnPercentage && thirdCancer != null)
         {
-            Destroy(thirdCancer);
+            firstCancer.GetComponent<Animator>().SetTrigger("Destroy");
             availableCancerPositions.Add(thirdCancerSpot);
             thirdCancerSpot = null;
         }
         if (currentStress < 0f)
             currentStress = 0f;
-        //textTmp.text = ((int)currentStress).ToString();
+        filling.SetFloat("Vector1_B2746C0A", currentStress / 100);
     }
 }

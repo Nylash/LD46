@@ -35,11 +35,13 @@ public class HeartManager : MonoBehaviour
 
         anim = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
-        source.PlayOneShot(AudioManager.instance.heart, AudioManager.instance.heartVolumeSafe);
+        source.clip = AudioManager.instance.heart;
+        source.volume = AudioManager.instance.heartVolumeSafe;
     }
 
     public void TakeDamage(float amount)
     {
+        ShakeScreenManager.instance.ShakeScreen();
         anim.SetTrigger("Damage");
         currentLife -= amount;
         if (currentLife <= 0)

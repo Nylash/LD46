@@ -106,6 +106,8 @@ public class InteractManager : MonoBehaviour
                         tracheaHint.sprite = tracheaOpen;
                         LungsManager.instance.anim.SetBool("Off", false);
                         PlayOpenSound(tracheaSource);
+                        if (!LungsManager.instance.specificSoundSource.isPlaying)
+                            LungsManager.instance.specificSoundSource.PlayOneShot(AudioManager.instance.breath, AudioManager.instance.breathVolume);
                     }
                 }
                 break;
@@ -177,17 +179,20 @@ public class InteractManager : MonoBehaviour
 
     void PlayOpenSound(AudioSource source)
     {
-        source.PlayOneShot(AudioManager.instance.leverOpen, AudioManager.instance.leverOpenVolume);
+        if (!source.isPlaying)
+            source.PlayOneShot(AudioManager.instance.leverOpen, AudioManager.instance.leverOpenVolume);
     }
 
     void PlayCloseSound(AudioSource source)
     {
-        source.PlayOneShot(AudioManager.instance.leverClose, AudioManager.instance.leverCloseVolume);
+        if (!source.isPlaying)
+            source.PlayOneShot(AudioManager.instance.leverClose, AudioManager.instance.leverCloseVolume);
     }
 
     void PlayBuzzSound(AudioSource source)
     {
-        source.PlayOneShot(AudioManager.instance.buzz, AudioManager.instance.buzzVolume);
+        if(!source.isPlaying)
+            source.PlayOneShot(AudioManager.instance.buzz, AudioManager.instance.buzzVolume);
     }
 
     public enum Organ
