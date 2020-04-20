@@ -15,6 +15,8 @@ public class FoodScript : MonoBehaviour
     [Header("VARIABLES")]
     public Food currentFood;
     public float currentGain;
+    bool inStomach;
+    SpriteRenderer render;
 
     private void Start()
     {
@@ -38,6 +40,21 @@ public class FoodScript : MonoBehaviour
             AudioManager.instance.foodSource.PlayOneShot(AudioManager.instance.eat1, AudioManager.instance.eat1Volume);
         else
             AudioManager.instance.foodSource.PlayOneShot(AudioManager.instance.eat2, AudioManager.instance.eat2Volume);
+        render = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if (inStomach)
+        {
+            if (render.color.a != PipesManager.instance.stomach.color.a)
+                render.color = PipesManager.instance.stomach.color;
+        }
+        else
+        {
+            if (render.color.a != PipesManager.instance.mouth.color.a)
+                render.color = PipesManager.instance.mouth.color;
+        }
     }
 
     public void CheckTrachea()
@@ -56,14 +73,13 @@ public class FoodScript : MonoBehaviour
             Destroy(gameObject);
         }
         else
-            InteractManager.instance.foodInStomach = true;
+            inStomach = true;
     }
 
     public void StomachReached()
     {
         StomachManager.instance.StartCoroutineFoodCD();
         StomachManager.instance.AbsorbFood(currentGain);
-        InteractManager.instance.foodInStomach = false;
         AudioManager.instance.foodSource.PlayOneShot(AudioManager.instance.burp, AudioManager.instance.burpVolume);
         Destroy(gameObject);
     }

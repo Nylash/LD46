@@ -11,7 +11,9 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform groundCheck;
 #pragma warning restore 0649
 
-
+	public Transform JLFXspot;
+	public GameObject JLFX;
+	public ParticleSystem walkFX;
 	const float groundedRadius = .2f;
 	public bool grounded;
 	public Rigidbody2D rb;
@@ -45,14 +47,15 @@ public class CharacterController2D : MonoBehaviour
 				if (!wasGrounded)
 				{
 					PlayerManager.instance.animController.SetBool("Landing", true);
-					//activate fx walk
-				}
-					
+					walkFX.Play();
+					Instantiate(JLFX, JLFXspot.transform.position, JLFX.transform.rotation);
+				}	
 			}
 		}
 		if (!grounded)
 		{
-			//desactivate FX walk if not already
+			if (walkFX.isEmitting)
+				walkFX.Stop();
 			PlayerManager.instance.animController.SetBool("Landing", false);
 		}
 			
@@ -83,6 +86,7 @@ public class CharacterController2D : MonoBehaviour
 		}
 		if ((grounded || callFromLadder) && jump)
 		{
+			Instantiate(JLFX, JLFXspot.transform.position, JLFX.transform.rotation);
 			grounded = false;
 			rb.AddForce(new Vector2(0f, jumpForce));
 			PlayerManager.instance.animController.speed = 1;

@@ -33,9 +33,7 @@ public class InteractManager : MonoBehaviour
     public Sprite bladderClose;
     public Sprite lungsStuck;
     public Sprite lungsOk;
-
-    [Header("VARIABLES")]
-    public bool foodInStomach;
+    public GameObject interactFX;
 
     private void Awake()
     {
@@ -86,7 +84,7 @@ public class InteractManager : MonoBehaviour
                 }
                 break;
             case Organ.trachea:
-                if (!LungsManager.instance.foodStucked && !foodInStomach)
+                if (!LungsManager.instance.foodStucked)
                 {
                     StartInteraction();
                     if (LungsManager.instance.tracheaOpen)
@@ -112,7 +110,7 @@ public class InteractManager : MonoBehaviour
                 }
                 break;
             case Organ.mouth:
-                if (!LungsManager.instance.foodStucked && StomachManager.instance.currentFood == null)
+                if (!LungsManager.instance.foodStucked)
                 {
                     StartInteraction();
                     if (StomachManager.instance.mouthOpen)
@@ -179,18 +177,21 @@ public class InteractManager : MonoBehaviour
 
     void PlayOpenSound(AudioSource source)
     {
+        Instantiate(interactFX, source.transform.position, Quaternion.identity);
         if (!source.isPlaying)
             source.PlayOneShot(AudioManager.instance.leverOpen, AudioManager.instance.leverOpenVolume);
     }
 
     void PlayCloseSound(AudioSource source)
     {
+        Instantiate(interactFX, source.transform.position, Quaternion.identity);
         if (!source.isPlaying)
             source.PlayOneShot(AudioManager.instance.leverClose, AudioManager.instance.leverCloseVolume);
     }
 
     void PlayBuzzSound(AudioSource source)
     {
+        Instantiate(interactFX, source.transform.position + new Vector3(0,.6f,0), Quaternion.identity);
         if (!source.isPlaying)
         {
             int i = Random.Range(0, 2);

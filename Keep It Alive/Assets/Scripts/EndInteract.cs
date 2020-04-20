@@ -18,6 +18,5 @@ public class EndInteract : MonoBehaviour
     public void JumpLandingEffect()
     {
         jumpLandingSource.PlayOneShot(AudioManager.instance.jump, AudioManager.instance.jumpVolume);
-        //jump/land FX
     }
 }
