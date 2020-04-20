@@ -326,6 +326,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   animController: {fileID: 4598839858251080548}
   controller: {fileID: 0}
+  objectTutoScript: {fileID: 0}
 --- !u!114 &3370454871153935200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,7 +367,6 @@ MonoBehaviour:
   lungsOk: {fileID: 0}
   interactFX: {fileID: 5860125497217327566, guid: dcfb0df3e4d1f874ead0422fb90cd3c9,
     type: 3}
-  foodInStomach: 0
 --- !u!50 &7997289842119779076
 Rigidbody2D:
   serializedVersion: 4
@@ -422,7 +422,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7997289842119779082}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 3b4015d2229d4de40891a1e13c3b4674, type: 2}
   m_IsTrigger: 0
@@ -444,8 +444,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.09594622}
-  m_Size: {x: 0.45132086, y: 0.8533539}
+  m_Offset: {x: 0, y: -0.0041134357}
+  m_Size: {x: 0.7, y: 1.0370195}
   m_Direction: 0
 --- !u!1001 &5796969180190365058
 PrefabInstance:
