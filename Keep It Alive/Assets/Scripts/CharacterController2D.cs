@@ -43,11 +43,19 @@ public class CharacterController2D : MonoBehaviour
 			{
 				grounded = true;
 				if (!wasGrounded)
+				{
 					PlayerManager.instance.animController.SetBool("Landing", true);
+					//activate fx walk
+				}
+					
 			}
 		}
 		if (!grounded)
+		{
+			//desactivate FX walk if not already
 			PlayerManager.instance.animController.SetBool("Landing", false);
+		}
+			
 	}
 
 
