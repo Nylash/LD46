@@ -121,13 +121,9 @@ public class InteractManager : MonoBehaviour
                 {
                     leftKidneyButton.SetTrigger("Interact");
                     StartInteraction();
-                    KidneyManager.instance.currentInputNumber += 1;
-                    if (KidneyManager.instance.currentInputNumber >= KidneyManager.instance.inputToBeChanged)
-                    {
-                        KidneyManager.instance.NewKidney();
-                        leftKidneyButton.SetTrigger("Close");
-                    }
-                        
+                    KidneyManager.instance.currentInputNumberLeft += 1;
+                    if (KidneyManager.instance.currentInputNumberLeft >= KidneyManager.instance.inputToBeChanged)
+                        KidneyManager.instance.NewLeftKidney();                        
                 }
                 break;
             case Organ.rightKidney:
@@ -135,12 +131,9 @@ public class InteractManager : MonoBehaviour
                 {
                     rightKidneyButton.SetTrigger("Interact");
                     StartInteraction();
-                    KidneyManager.instance.currentInputNumber += 1;
-                    if (KidneyManager.instance.currentInputNumber >= KidneyManager.instance.inputToBeChanged)
-                    {
-                        KidneyManager.instance.NewKidney();
-                        rightKidneyButton.SetTrigger("Close");
-                    }
+                    KidneyManager.instance.currentInputNumberRight += 1;
+                    if (KidneyManager.instance.currentInputNumberRight >= KidneyManager.instance.inputToBeChanged)
+                        KidneyManager.instance.NewRightKidney();
                 }
                 break;
             case Organ.none:

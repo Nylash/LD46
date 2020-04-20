@@ -30,7 +30,6 @@ public class StomachManager : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
 
-        currentCapacity = maxCapacity / 2;
         filling = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material;
         filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
     }

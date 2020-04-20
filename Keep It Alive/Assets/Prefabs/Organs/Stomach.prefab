@@ -185,7 +185,8 @@ MonoBehaviour:
   pvLossPerSecond: 1
   currentFood: {fileID: 0}
   mouthOpen: 0
-  currentCapacity: 0
+  currentCapacity: 40
+  speedEmptying: 1
 --- !u!95 &990237178
 Animator:
   serializedVersion: 3

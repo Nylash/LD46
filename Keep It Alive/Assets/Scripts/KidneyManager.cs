@@ -12,7 +12,8 @@ public class KidneyManager : MonoBehaviour
     public int inputToBeChanged;
 
     [Header("VARIABLES")]
-    public int currentInputNumber;
+    public int currentInputNumberLeft;
+    public int currentInputNumberRight;
     public bool rightKidneyDying;
     public bool leftKidneyDying;
     
@@ -65,10 +66,17 @@ public class KidneyManager : MonoBehaviour
         }
     }
 
-    public void NewKidney()
+    public void NewRightKidney()
     {
-        currentInputNumber = 0;
-        leftKidneyDying = false;
+        currentInputNumberRight = 0;
         rightKidneyDying = false;
+        InteractManager.instance.rightKidneyButton.SetTrigger("Close");
+    }
+
+    public void NewLeftKidney()
+    {
+        currentInputNumberLeft = 0;
+        leftKidneyDying = false;
+        InteractManager.instance.leftKidneyButton.SetTrigger("Close");
     }
 }

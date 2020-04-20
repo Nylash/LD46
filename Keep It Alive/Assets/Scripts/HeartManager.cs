@@ -13,6 +13,7 @@ public class HeartManager : MonoBehaviour
     public Canvas endScreen;
     public SpriteRenderer spriteRender;
     Material filling;
+    Animator anim;
 
     [Header("VARIABLES")]
     public float currentLife = 100f;
@@ -30,10 +31,13 @@ public class HeartManager : MonoBehaviour
     {
         filling = spriteRender.material;
         filling.SetFloat("Vector1_B2746C0A", currentLife / 100);
+
+        anim = GetComponent<Animator>();
     }
 
     public void TakeDamage(float amount)
     {
+        anim.SetTrigger("Damage");
         currentLife -= amount;
         if (currentLife <= 0)
         {
