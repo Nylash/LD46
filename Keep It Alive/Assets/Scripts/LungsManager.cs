@@ -16,6 +16,7 @@ public class LungsManager : MonoBehaviour
     public SpriteRenderer renderer1;
     public SpriteRenderer renderer2;
     public Animator anim;
+    public AudioSource specificSoundSource;
     Material filling1;
     Material filling2;
 
@@ -59,6 +60,12 @@ public class LungsManager : MonoBehaviour
             }
             else
             {
+                if(currentAir <= 0f)
+                {
+                    if (!specificSoundSource.isPlaying)
+                        specificSoundSource.PlayOneShot(AudioManager.instance.breath, AudioManager.instance.breathVolume);
+                }
+                    
                 currentAir += Time.deltaTime;
                 if (currentAir > airMaxTime)
                     currentAir = airMaxTime;
@@ -82,5 +89,7 @@ public class LungsManager : MonoBehaviour
     {
         foodStucked = false;
         currentInputNumber = 0;
+        if (!specificSoundSource.isPlaying)
+            specificSoundSource.PlayOneShot(AudioManager.instance.breath, AudioManager.instance.breathVolume);
     }
 }

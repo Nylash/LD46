@@ -33,6 +33,11 @@ public class FoodScript : MonoBehaviour
                 currentGain = gainWithCupcake;
                 break;
         }
+        int i = Random.Range(0, 2);
+        if(i == 0)
+            AudioManager.instance.foodSource.PlayOneShot(AudioManager.instance.eat1, AudioManager.instance.eat1Volume);
+        else
+            AudioManager.instance.foodSource.PlayOneShot(AudioManager.instance.eat2, AudioManager.instance.eat2Volume);
     }
 
     public void CheckTrachea()
@@ -46,6 +51,8 @@ public class FoodScript : MonoBehaviour
             InteractManager.instance.mouthButton.SetBool("Open", false);
             InteractManager.instance.mouthHint.sprite = InteractManager.instance.mouthClose;
             InteractManager.instance.lungsButton.SetTrigger("Open");
+            InteractManager.instance.lungsHint.sprite = InteractManager.instance.lungsStuck;
+            AudioManager.instance.foodSource.PlayOneShot(AudioManager.instance.cough, AudioManager.instance.coughVolume);
             Destroy(gameObject);
         }
         else
@@ -57,6 +64,7 @@ public class FoodScript : MonoBehaviour
         StomachManager.instance.StartCoroutineFoodCD();
         StomachManager.instance.AbsorbFood(currentGain);
         InteractManager.instance.foodInStomach = false;
+        AudioManager.instance.foodSource.PlayOneShot(AudioManager.instance.burp, AudioManager.instance.burpVolume);
         Destroy(gameObject);
     }
 

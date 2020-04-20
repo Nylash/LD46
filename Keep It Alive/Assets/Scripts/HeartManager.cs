@@ -12,6 +12,7 @@ public class HeartManager : MonoBehaviour
     public GameObject cam2;
     public Canvas endScreen;
     public SpriteRenderer spriteRender;
+    AudioSource source;
     Material filling;
     Animator anim;
 
@@ -33,6 +34,8 @@ public class HeartManager : MonoBehaviour
         filling.SetFloat("Vector1_B2746C0A", currentLife / 100);
 
         anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
+        source.PlayOneShot(AudioManager.instance.heart, AudioManager.instance.heartVolumeSafe);
     }
 
     public void TakeDamage(float amount)
@@ -49,5 +52,15 @@ public class HeartManager : MonoBehaviour
             cam2.SetActive(true);
         }
         filling.SetFloat("Vector1_B2746C0A", currentLife/100);
+    }
+
+    public void VolumeSafe()
+    {
+        source.volume = AudioManager.instance.heartVolumeSafe;
+    }
+
+    public void VolumeDanger()
+    {
+        source.volume = AudioManager.instance.heartVolumeDanger;
     }
 }

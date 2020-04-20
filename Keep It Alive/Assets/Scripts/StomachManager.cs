@@ -14,6 +14,7 @@ public class StomachManager : MonoBehaviour
     public float pvLossPerSecond;
 
     [Header("COMPONENTS")]
+    public AudioSource specificSoundSource;
     Material filling;
     Animator anim;
 
@@ -69,7 +70,11 @@ public class StomachManager : MonoBehaviour
             if (currentCapacity >= maxCapacity || currentCapacity <= 0f)
             {
                 if (!anim.GetBool("Danger"))
+                {
                     anim.SetBool("Danger", true);
+                    if (!specificSoundSource.isPlaying)
+                        specificSoundSource.PlayOneShot(AudioManager.instance.stomachSound, AudioManager.instance.stomachSoundVolume);
+                }   
             }
             else
             {

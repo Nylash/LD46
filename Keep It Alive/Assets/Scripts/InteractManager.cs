@@ -14,15 +14,25 @@ public class InteractManager : MonoBehaviour
     public Animator tracheaButton;
     public Animator mouthButton;
     public Animator bladderButton;
+    public AudioSource brainSource;
+    public AudioSource lungsSource;
+    public AudioSource rightKidneySource;
+    public AudioSource leftKidneySource;
+    public AudioSource tracheaSource;
+    public AudioSource mouthSource;
+    public AudioSource bladderSource;
     public SpriteRenderer mouthHint;
     public SpriteRenderer tracheaHint;
     public SpriteRenderer bladderHint;
+    public SpriteRenderer lungsHint;
     public Sprite mouthOpen;
     public Sprite mouthClose;
     public Sprite tracheaOpen;
     public Sprite tracheaClose;
     public Sprite bladderOpen;
     public Sprite bladderClose;
+    public Sprite lungsStuck;
+    public Sprite lungsOk;
 
     [Header("VARIABLES")]
     public bool foodInStomach;
@@ -46,8 +56,10 @@ public class InteractManager : MonoBehaviour
                     lungsButton.SetTrigger("Interact");
                     StartInteraction();
                     LungsManager.instance.currentInputNumber += 1;
+                    PlayBuzzSound(lungsSource);
                     if (LungsManager.instance.currentInputNumber >= LungsManager.instance.inputToBeUnstucked)
                     {
+                        lungsHint.sprite = lungsOk;
                         LungsManager.instance.UnstuckTrachea();
                         lungsButton.SetTrigger("Close");
                     }
@@ -62,6 +74,7 @@ public class InteractManager : MonoBehaviour
                     bladderButton.SetBool("Close", true);
                     bladderButton.SetBool("Open", false);
                     bladderHint.sprite = bladderClose;
+                    PlayCloseSound(bladderSource);
                 }
                 else
                 {
@@ -69,6 +82,7 @@ public class InteractManager : MonoBehaviour
                     bladderButton.SetBool("Close", false);
                     bladderButton.SetBool("Open", true);
                     bladderHint.sprite = bladderOpen;
+                    PlayOpenSound(bladderSource);
                 }
                 break;
             case Organ.trachea:
@@ -82,6 +96,7 @@ public class InteractManager : MonoBehaviour
                         tracheaButton.SetBool("Open", false);
                         tracheaHint.sprite = tracheaClose;
                         LungsManager.instance.anim.SetBool("Off", true);
+                        PlayCloseSound(tracheaSource);
                     }
                     else
                     {
@@ -90,6 +105,7 @@ public class InteractManager : MonoBehaviour
                         tracheaButton.SetBool("Open", true);
                         tracheaHint.sprite = tracheaOpen;
                         LungsManager.instance.anim.SetBool("Off", false);
+                        PlayOpenSound(tracheaSource);
                     }
                 }
                 break;
@@ -103,6 +119,7 @@ public class InteractManager : MonoBehaviour
                         mouthButton.SetBool("Close", true);
                         mouthButton.SetBool("Open", false);
                         mouthHint.sprite = mouthClose;
+                        PlayCloseSound(mouthSource);
                     }
                     else
                     {
@@ -110,6 +127,7 @@ public class InteractManager : MonoBehaviour
                         mouthButton.SetBool("Close", false);
                         mouthButton.SetBool("Open", true);
                         mouthHint.sprite = mouthOpen;
+                        PlayOpenSound(mouthSource);
                     }
                 }
                 break;
@@ -117,6 +135,7 @@ public class InteractManager : MonoBehaviour
                 brainButton.SetTrigger("Interact");
                 StartInteraction();
                 BrainManager.instance.ReduceStress();
+                PlayBuzzSound(brainSource);
                 break;
             case Organ.leftKidney:
                 if (KidneyManager.instance.leftKidneyDying)
@@ -124,6 +143,7 @@ public class InteractManager : MonoBehaviour
                     leftKidneyButton.SetTrigger("Interact");
                     StartInteraction();
                     KidneyManager.instance.currentInputNumberLeft += 1;
+                    PlayBuzzSound(leftKidneySource);
                     if (KidneyManager.instance.currentInputNumberLeft >= KidneyManager.instance.inputToBeChanged)
                         KidneyManager.instance.NewLeftKidney();                        
                 }
@@ -134,6 +154,7 @@ public class InteractManager : MonoBehaviour
                     rightKidneyButton.SetTrigger("Interact");
                     StartInteraction();
                     KidneyManager.instance.currentInputNumberRight += 1;
+                    PlayBuzzSound(rightKidneySource);
                     if (KidneyManager.instance.currentInputNumberRight >= KidneyManager.instance.inputToBeChanged)
                         KidneyManager.instance.NewRightKidney();
                 }
@@ -152,6 +173,21 @@ public class InteractManager : MonoBehaviour
             PlayerManager.instance.animController.SetBool("Interacting", true);
         }
         PlayerManager.instance.controller.rb.velocity = Vector2.zero;
+    }
+
+    void PlayOpenSound(AudioSource source)
+    {
+        source.PlayOneShot(AudioManager.instance.leverOpen, AudioManager.instance.leverOpenVolume);
+    }
+
+    void PlayCloseSound(AudioSource source)
+    {
+        source.PlayOneShot(AudioManager.instance.leverClose, AudioManager.instance.leverCloseVolume);
+    }
+
+    void PlayBuzzSound(AudioSource source)
+    {
+        source.PlayOneShot(AudioManager.instance.buzz, AudioManager.instance.buzzVolume);
     }
 
     public enum Organ
