@@ -14,9 +14,6 @@ public class KidneyManager : MonoBehaviour
     public float percentageAlarm;
     public int inputToBeChanged;
 
-    [Header("COMPONENTS")]
-    //public Text textTmp;
-
     [Header("VARIABLES")]
     public int currentInputNumber;
     public bool alarmLaunched;
@@ -49,14 +46,19 @@ public class KidneyManager : MonoBehaviour
             currentTimer = 0f;
             HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
         }
-        //textTmp.text = ((int)((currentTimer / currentMaxTime)*100)).ToString();
         if((((currentTimer / currentMaxTime) * 100) <= percentageAlarm) && !alarmLaunched)
         {
             int rand = Random.Range(0, 2);
             if (rand == 0)
+            {
                 leftKidneyDying = true;
+                InteractManager.instance.leftKidneyButton.SetTrigger("Open");
+            }
             else
+            {
                 rightKidneyDying = true;
+                InteractManager.instance.rightKidneyButton.SetTrigger("Open");
+            } 
             alarmLaunched = true;
             InvokeRepeating("Alarm", 0, .5f);
         }
@@ -68,7 +70,6 @@ public class KidneyManager : MonoBehaviour
         alarmLaunched = false;
         currentMaxTime = Random.Range(minTimeBeforeEnd, maxTimeBeforeEnd);
         currentTimer = currentMaxTime;
-        //textTmp.text = ((int)((currentTimer / currentMaxTime) * 100)).ToString();
         currentInputNumber = 0;
         leftKidneyDying = false;
         rightKidneyDying = false;

@@ -7,13 +7,25 @@ public class InteractManager : MonoBehaviour
     public static InteractManager instance;
 
     [Header("CONFIGURATIONS")]
-    public Animator brain;
-    public Animator lungs;
-    public Animator rightKidney;
-    public Animator leftKidney;
-    public Animator trachea;
-    public Animator mouth;
-    public Animator bladder;
+    public Animator brainButton;
+    public Animator lungsButton;
+    public Animator rightKidneyButton;
+    public Animator leftKidneyButton;
+    public Animator tracheaButton;
+    public Animator mouthButton;
+    public Animator bladderButton;
+    public SpriteRenderer mouthHint;
+    public SpriteRenderer tracheaHint;
+    public SpriteRenderer bladderHint;
+    public Sprite mouthOpen;
+    public Sprite mouthClose;
+    public Sprite tracheaOpen;
+    public Sprite tracheaClose;
+    public Sprite bladderOpen;
+    public Sprite bladderClose;
+
+    [Header("VARIABLES")]
+    public bool foodInStomach;
 
     private void Awake()
     {
@@ -31,11 +43,15 @@ public class InteractManager : MonoBehaviour
             case Organ.lungs:
                 if (LungsManager.instance.foodStucked)
                 {
-                    lungs.SetTrigger("Interact");
+                    lungsButton.SetTrigger("Interact");
                     StartInteraction();
                     LungsManager.instance.currentInputNumber += 1;
                     if (LungsManager.instance.currentInputNumber >= LungsManager.instance.inputToBeUnstucked)
+                    {
                         LungsManager.instance.UnstuckTrachea();
+                        lungsButton.SetTrigger("Close");
+                    }
+                        
                 }
                 break;
             case Organ.bladder:
@@ -43,31 +59,35 @@ public class InteractManager : MonoBehaviour
                 if (BladderManager.instance.peeing)
                 {
                     BladderManager.instance.peeing = false;
-                    bladder.SetBool("Close", true);
-                    bladder.SetBool("Open", false);
+                    bladderButton.SetBool("Close", true);
+                    bladderButton.SetBool("Open", false);
+                    bladderHint.sprite = bladderClose;
                 }
                 else
                 {
                     BladderManager.instance.peeing = true;
-                    bladder.SetBool("Close", false);
-                    bladder.SetBool("Open", true);
+                    bladderButton.SetBool("Close", false);
+                    bladderButton.SetBool("Open", true);
+                    bladderHint.sprite = bladderOpen;
                 }
                 break;
             case Organ.trachea:
-                if (!LungsManager.instance.foodStucked && StomachManager.instance.currentFood == null)
+                if (!LungsManager.instance.foodStucked && !foodInStomach)
                 {
                     StartInteraction();
                     if (LungsManager.instance.tracheaOpen)
                     {
                         LungsManager.instance.tracheaOpen = false;
-                        trachea.SetBool("Close", true);
-                        trachea.SetBool("Open", false);
+                        tracheaButton.SetBool("Close", true);
+                        tracheaButton.SetBool("Open", false);
+                        tracheaHint.sprite = tracheaClose;
                     }
                     else
                     {
                         LungsManager.instance.tracheaOpen = true;
-                        trachea.SetBool("Close", false);
-                        trachea.SetBool("Open", true);
+                        tracheaButton.SetBool("Close", false);
+                        tracheaButton.SetBool("Open", true);
+                        tracheaHint.sprite = tracheaOpen;
                     }
                 }
                 break;
@@ -78,40 +98,49 @@ public class InteractManager : MonoBehaviour
                     if (StomachManager.instance.mouthOpen)
                     {
                         StomachManager.instance.mouthOpen = false;
-                        mouth.SetBool("Close", true);
-                        mouth.SetBool("Open", false);
+                        mouthButton.SetBool("Close", true);
+                        mouthButton.SetBool("Open", false);
+                        mouthHint.sprite = mouthClose;
                     }
                     else
                     {
                         StomachManager.instance.mouthOpen = true;
-                        mouth.SetBool("Close", false);
-                        mouth.SetBool("Open", true);
+                        mouthButton.SetBool("Close", false);
+                        mouthButton.SetBool("Open", true);
+                        mouthHint.sprite = mouthOpen;
                     }
                 }
                 break;
             case Organ.brain:
-                brain.SetTrigger("Interact");
+                brainButton.SetTrigger("Interact");
                 StartInteraction();
                 BrainManager.instance.ReduceStress();
                 break;
             case Organ.leftKidney:
                 if (KidneyManager.instance.alarmLaunched && KidneyManager.instance.leftKidneyDying)
                 {
-                    leftKidney.SetTrigger("Interact");
+                    leftKidneyButton.SetTrigger("Interact");
                     StartInteraction();
                     KidneyManager.instance.currentInputNumber += 1;
                     if (KidneyManager.instance.currentInputNumber >= KidneyManager.instance.inputToBeChanged)
+                    {
                         KidneyManager.instance.NewKidney();
+                        leftKidneyButton.SetTrigger("Close");
+                    }
+                        
                 }
                 break;
             case Organ.rightKidney:
                 if (KidneyManager.instance.alarmLaunched && KidneyManager.instance.rightKidneyDying)
                 {
-                    rightKidney.SetTrigger("Interact");
+                    rightKidneyButton.SetTrigger("Interact");
                     StartInteraction();
                     KidneyManager.instance.currentInputNumber += 1;
                     if (KidneyManager.instance.currentInputNumber >= KidneyManager.instance.inputToBeChanged)
+                    {
                         KidneyManager.instance.NewKidney();
+                        rightKidneyButton.SetTrigger("Close");
+                    }
                 }
                 break;
             case Organ.none:

@@ -74,6 +74,10 @@ public class BrainManager : MonoBehaviour
             HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
         }
         filling.SetFloat("Vector1_B2746C0A", currentStress/100);
+        if (currentStress != 0f)
+            InteractManager.instance.brainButton.SetTrigger("Open");
+        else
+            InteractManager.instance.brainButton.SetTrigger("Close");
     }
 
     public void ReduceStress()

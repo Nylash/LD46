@@ -41,13 +41,20 @@ public class FoodScript : MonoBehaviour
         {
             LungsManager.instance.foodStucked = true;
             StomachManager.instance.mouthOpen = false;
+            InteractManager.instance.mouthButton.SetBool("Close", true);
+            InteractManager.instance.mouthButton.SetBool("Open", false);
+            InteractManager.instance.mouthHint.sprite = InteractManager.instance.mouthClose;
+            InteractManager.instance.lungsButton.SetTrigger("Open");
             Destroy(gameObject);
         }
+        else
+            InteractManager.instance.foodInStomach = true;
     }
 
     public void StomachReached()
     {
         StomachManager.instance.AbsorbFood(currentGain);
+        InteractManager.instance.foodInStomach = false;
         Destroy(gameObject);
     }
 
