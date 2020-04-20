@@ -16817,6 +16817,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1903588833}
     m_Modifications:
+    - target: {fileID: 6046810275095224196, guid: ad8a2b921dc392749a8864175fc66d11,
+        type: 3}
+      propertyPath: cancerPositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 1536404977}
+    - target: {fileID: 6046810275095224196, guid: ad8a2b921dc392749a8864175fc66d11,
+        type: 3}
+      propertyPath: cancerPositions.Array.data[1]
+      value: 
+      objectReference: {fileID: 1361634048}
+    - target: {fileID: 6046810275095224196, guid: ad8a2b921dc392749a8864175fc66d11,
+        type: 3}
+      propertyPath: cancerPositions.Array.data[2]
+      value: 
+      objectReference: {fileID: 2113514540}
     - target: {fileID: 6046810275095224198, guid: ad8a2b921dc392749a8864175fc66d11,
         type: 3}
       propertyPath: m_LocalPosition.x
