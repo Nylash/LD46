@@ -32,6 +32,10 @@ public class BladderManager : MonoBehaviour
 
     private void Update()
     {
+        if (!HeartManager.instance.defeat)
+        {
+
+        }
         if (full)
         {
             currentTimer += Time.deltaTime;

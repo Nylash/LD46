@@ -41,6 +41,10 @@ public class LungsManager : MonoBehaviour
 
     private void Update()
     {
+        if (!HeartManager.instance.defeat)
+        {
+
+        }
         if (!tracheaOpen || foodStucked)
         {
             currentAir -= Time.deltaTime;

@@ -46,6 +46,10 @@ public class BrainManager : MonoBehaviour
 
     private void Update()
     {
+        if (!HeartManager.instance.defeat)
+        {
+
+        }
         currentStress += gainPerSecond * Time.deltaTime;
         if(currentStress >= firstCancerSpawnPercentage && firstCancer == null)
         {

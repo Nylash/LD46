@@ -35,6 +35,10 @@ public class StomachManager : MonoBehaviour
 
     private void Update()
     {
+        if (!HeartManager.instance.defeat)
+        {
+
+        }
         if (mouthOpen && !foodOnCD)
         {
             int foodType = Random.Range(0, 3);

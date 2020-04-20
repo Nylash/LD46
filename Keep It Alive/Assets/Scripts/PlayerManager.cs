@@ -21,8 +21,10 @@ public class PlayerManager : MonoBehaviour
     bool onLadder = false;
     bool onLadderTrigger = false;
     bool canInteract = false;
+    bool pause;
 
     [Header("COMPONENTS")]
+    public Canvas pauseMenu;
     public Animator animController;
     public CharacterController2D controller;
     InputMap inputMap;
@@ -46,6 +48,7 @@ public class PlayerManager : MonoBehaviour
         inputMap.Gameplay.Jump.started += ctx => jump = true;
         inputMap.Gameplay.Interact.started += ctx => Interact();
         inputMap.Gameplay.SwitchCamera.started += ctx => SwitchCamera();
+        inputMap.Gameplay.Pause.started += ctx => Pause();
 
         controller = GetComponent<CharacterController2D>();
 
@@ -54,11 +57,15 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!HeartManager.instance.defeat)
+        {
+
+        }
         if (!animController.GetBool("Interacting"))
         {
             if (onLadderTrigger)
             {
-                if (Mathf.Abs(verticalMove) > .1f && !onLadder)
+                if (verticalMove > .1f && !onLadder)
                 {
                     onLadder = true;
                     animController.SetBool("Climbing", true);
@@ -114,13 +121,19 @@ public class PlayerManager : MonoBehaviour
         cam2.SetActive(!cam2.activeSelf);
     }
 
+    void Pause()
+    {
+        pause = !pause;
+        pauseMenu.enabled = pause;
+        Time.timeScale = (pause ? 0 : 1);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.tag)
         {
             case "Ladder":
                 onLadderTrigger = true;
-                
                 break;
             case "Organ":
                 currentOrgan = collision.gameObject.GetComponent<OrganTrigger>().organ;
