@@ -81,6 +81,7 @@ public class InteractManager : MonoBehaviour
                         tracheaButton.SetBool("Close", true);
                         tracheaButton.SetBool("Open", false);
                         tracheaHint.sprite = tracheaClose;
+                        LungsManager.instance.anim.SetBool("Off", true);
                     }
                     else
                     {
@@ -88,6 +89,7 @@ public class InteractManager : MonoBehaviour
                         tracheaButton.SetBool("Close", false);
                         tracheaButton.SetBool("Open", true);
                         tracheaHint.sprite = tracheaOpen;
+                        LungsManager.instance.anim.SetBool("Off", false);
                     }
                 }
                 break;

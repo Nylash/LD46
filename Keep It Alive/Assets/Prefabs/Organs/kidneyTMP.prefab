@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728193532}
   - component: {fileID: 1728193533}
+  - component: {fileID: 5210417102414030059}
   m_Layer: 0
   m_Name: ReinR
   m_TagString: Untagged
@@ -81,6 +82,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5210417102414030059
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728193531}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e98173cb683ec0e4c8b23efdf591284b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3915630166484825469
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5423293551029739177}
   - component: {fileID: 4320619964467457193}
+  - component: {fileID: 3848736173130237004}
   m_Layer: 0
   m_Name: ReinL
   m_TagString: Untagged
@@ -162,6 +183,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3848736173130237004
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3915630166484825469}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fb156f03bbc64c842919661312720220, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8863555649175504221
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +212,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8863555649175504219}
   - component: {fileID: 8863555649175504216}
-  - component: {fileID: 856111110}
   m_Layer: 0
   m_Name: kidneyTMP
   m_TagString: Untagged
@@ -210,25 +249,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pvLossPerSecond: 1
   inputToBeChanged: 15
-  currentInputNumber: 0
+  animL: {fileID: 3848736173130237004}
+  animR: {fileID: 5210417102414030059}
+  currentInputNumberLeft: 0
+  currentInputNumberRight: 0
   rightKidneyDying: 0
   leftKidneyDying: 0
---- !u!95 &856111110
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8863555649175504221}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 53c5a9e3cfda56c45a6ea895a48ee63c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

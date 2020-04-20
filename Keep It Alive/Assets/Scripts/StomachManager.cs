@@ -15,6 +15,7 @@ public class StomachManager : MonoBehaviour
 
     [Header("COMPONENTS")]
     Material filling;
+    Animator anim;
 
     [Header("VARIABLES")]
     public GameObject currentFood;
@@ -32,6 +33,8 @@ public class StomachManager : MonoBehaviour
 
         filling = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material;
         filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
+
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -63,6 +66,16 @@ public class StomachManager : MonoBehaviour
                 HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
             }
             filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
+            if (currentCapacity >= maxCapacity || currentCapacity <= 0f)
+            {
+                if (!anim.GetBool("Danger"))
+                    anim.SetBool("Danger", true);
+            }
+            else
+            {
+                if (anim.GetBool("Danger"))
+                    anim.SetBool("Danger", false);
+            }
         }
     }
 

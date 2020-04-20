@@ -11,6 +11,10 @@ public class KidneyManager : MonoBehaviour
     public float pvLossPerSecond;
     public int inputToBeChanged;
 
+    [Header("COMPONENTS")]
+    public Animator animL;
+    public Animator animR;
+
     [Header("VARIABLES")]
     public int currentInputNumberLeft;
     public int currentInputNumberRight;
@@ -45,12 +49,14 @@ public class KidneyManager : MonoBehaviour
         {
             rightKidneyDying = true;
             InteractManager.instance.rightKidneyButton.SetTrigger("Open");
+            animR.SetBool("Danger", true);
             return;
         }
         if(rightKidneyDying)
         {
             leftKidneyDying = true;
             InteractManager.instance.leftKidneyButton.SetTrigger("Open");
+            animL.SetBool("Danger", true);
             return;
         }
         int rand = Random.Range(0, 2);
@@ -58,11 +64,13 @@ public class KidneyManager : MonoBehaviour
         {
             leftKidneyDying = true;
             InteractManager.instance.leftKidneyButton.SetTrigger("Open");
+            animL.SetBool("Danger", true);
         }
         else
         {
             rightKidneyDying = true;
             InteractManager.instance.rightKidneyButton.SetTrigger("Open");
+            animR.SetBool("Danger", true);
         }
     }
 
@@ -71,6 +79,7 @@ public class KidneyManager : MonoBehaviour
         currentInputNumberRight = 0;
         rightKidneyDying = false;
         InteractManager.instance.rightKidneyButton.SetTrigger("Close");
+        animR.SetBool("Danger", false);
     }
 
     public void NewLeftKidney()
@@ -78,5 +87,6 @@ public class KidneyManager : MonoBehaviour
         currentInputNumberLeft = 0;
         leftKidneyDying = false;
         InteractManager.instance.leftKidneyButton.SetTrigger("Close");
+        animL.SetBool("Danger", false);
     }
 }

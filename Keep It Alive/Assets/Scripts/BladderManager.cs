@@ -15,6 +15,7 @@ public class BladderManager : MonoBehaviour
     [Header("COMPONENTS")]
     public SpriteRenderer render;
     Material filling;
+    Animator anim;
 
     [Header("VARIABLES")]
     public bool peeing;
@@ -31,6 +32,8 @@ public class BladderManager : MonoBehaviour
 
         filling = render.material;
         filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
+
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -61,6 +64,16 @@ public class BladderManager : MonoBehaviour
             else
                 StomachManager.instance.speedEmptying = 1;
             filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
+            if (currentCapacity >= maxCapacity)
+            {
+                if (!anim.GetBool("Danger"))
+                    anim.SetBool("Danger", true);
+            }
+            else
+            {
+                if (anim.GetBool("Danger"))
+                    anim.SetBool("Danger", false);
+            }
         }
     }
 

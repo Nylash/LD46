@@ -10,12 +10,12 @@ public class LungsManager : MonoBehaviour
     [Header("CONFIGURATION")]
     public float airMaxTime;
     public float pvLossPerSecond;
-    public float percentageAlarm;
     public int inputToBeUnstucked;
 
     [Header("COMPONENTS")]
     public SpriteRenderer renderer1;
     public SpriteRenderer renderer2;
+    public Animator anim;
     Material filling1;
     Material filling2;
 
@@ -24,7 +24,6 @@ public class LungsManager : MonoBehaviour
     public bool foodStucked = false;
     public int currentInputNumber;
     public float currentAir;
-    bool alarmLaunched;
 
     private void Awake()
     {
@@ -41,6 +40,8 @@ public class LungsManager : MonoBehaviour
         filling2 = renderer2.material;
         filling1.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
         filling2.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
+
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -62,24 +63,18 @@ public class LungsManager : MonoBehaviour
                 if (currentAir > airMaxTime)
                     currentAir = airMaxTime;
             }
-            filling1.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
-            filling2.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
-            if (!alarmLaunched)
+            if (currentAir <= 0f || foodStucked)
             {
-                if (((currentAir / airMaxTime) * 100) <= percentageAlarm)
-                {
-                    alarmLaunched = true;
-                    InvokeRepeating("Alarm", 0, .5f);
-                }
+                if (!anim.GetBool("Danger"))
+                    anim.SetBool("Danger", true);
             }
             else
             {
-                if (((currentAir / airMaxTime) * 100) > percentageAlarm)
-                {
-                    alarmLaunched = false;
-                    CancelInvoke("Alarm");
-                }
+                if (anim.GetBool("Danger"))
+                    anim.SetBool("Danger", false);
             }
+            filling1.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
+            filling2.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
         }
     }
 
@@ -87,10 +82,5 @@ public class LungsManager : MonoBehaviour
     {
         foodStucked = false;
         currentInputNumber = 0;
-    }
-
-    void Alarm()
-    {
-        
     }
 }

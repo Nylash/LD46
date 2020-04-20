@@ -20,6 +20,7 @@ public class BrainManager : MonoBehaviour
     [Header("COMPONENTS")]
     public SpriteRenderer render;
     Material filling;
+    Animator anim;
 
     [Header("VARIABLES")]
     public float currentStress;
@@ -44,6 +45,8 @@ public class BrainManager : MonoBehaviour
         filling = render.material;
         filling.SetFloat("Vector1_B2746C0A", currentStress / 100);
         availableCancerPositions.AddRange(cancerPositions);
+
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -76,6 +79,13 @@ public class BrainManager : MonoBehaviour
             {
                 currentStress = 100f;
                 HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
+                if(!anim.GetBool("Danger"))
+                    anim.SetBool("Danger", true);
+            }
+            else
+            {
+                if (anim.GetBool("Danger"))
+                    anim.SetBool("Danger", false);
             }
             filling.SetFloat("Vector1_B2746C0A", currentStress / 100);
             if (currentStress != 0f)
