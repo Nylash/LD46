@@ -182,5 +182,6 @@ MonoBehaviour:
     type: 3}
   spawnFoodTransform: {fileID: 0}
   pvLossPerSecond: 1
+  currentFood: {fileID: 0}
   mouthOpen: 0
   currentCapacity: 0
