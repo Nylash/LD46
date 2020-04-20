@@ -901,8 +901,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71109485}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.835, y: 8.71, z: 0.7988281}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: 2.676, y: 8.839, z: 0.7988281}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 844718702}
   m_RootOrder: 8
@@ -946,7 +946,7 @@ SpriteRenderer:
   m_SortingLayerID: -1682299469
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96db6a57257ab674883659bd1de688c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f1132a976d294b4cb465ecb539e44d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3618,7 +3618,7 @@ PrefabInstance:
     - target: {fileID: 3084460051055070019, guid: 4b489386c7e9b024fa08a96123520255,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.75
+      value: 2.65
       objectReference: {fileID: 0}
     - target: {fileID: 3084460051055070019, guid: 4b489386c7e9b024fa08a96123520255,
         type: 3}
@@ -16226,6 +16226,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1903588833}
     m_Modifications:
+    - target: {fileID: 302807731469989918, guid: f84f86466893a0a449fbb98b09c75e2b,
+        type: 3}
+      propertyPath: timeBeforeKillKidneyWhenFull
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2583460206262582651, guid: f84f86466893a0a449fbb98b09c75e2b,
         type: 3}
       propertyPath: m_SortingOrder
@@ -16548,13 +16553,13 @@ PrefabInstance:
         type: 3}
       propertyPath: tracheaOpen
       value: 
-      objectReference: {fileID: 21300000, guid: 96db6a57257ab674883659bd1de688c8,
+      objectReference: {fileID: 21300000, guid: 5f1132a976d294b4cb465ecb539e44d6,
         type: 3}
     - target: {fileID: 3370454871153935200, guid: 7a67bf9da0b115d4190ae930abc63754,
         type: 3}
       propertyPath: tracheaClose
       value: 
-      objectReference: {fileID: 21300000, guid: 314d9fad82247c74b938214dfc029e13,
+      objectReference: {fileID: 21300000, guid: ebd784f3aa31e1345bee9b1b81fc7f1e,
         type: 3}
     - target: {fileID: 3370454871153935200, guid: 7a67bf9da0b115d4190ae930abc63754,
         type: 3}

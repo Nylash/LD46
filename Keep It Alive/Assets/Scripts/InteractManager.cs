@@ -117,7 +117,7 @@ public class InteractManager : MonoBehaviour
                 BrainManager.instance.ReduceStress();
                 break;
             case Organ.leftKidney:
-                if (KidneyManager.instance.alarmLaunched && KidneyManager.instance.leftKidneyDying)
+                if (KidneyManager.instance.leftKidneyDying)
                 {
                     leftKidneyButton.SetTrigger("Interact");
                     StartInteraction();
@@ -131,7 +131,7 @@ public class InteractManager : MonoBehaviour
                 }
                 break;
             case Organ.rightKidney:
-                if (KidneyManager.instance.alarmLaunched && KidneyManager.instance.rightKidneyDying)
+                if (KidneyManager.instance.rightKidneyDying)
                 {
                     rightKidneyButton.SetTrigger("Interact");
                     StartInteraction();

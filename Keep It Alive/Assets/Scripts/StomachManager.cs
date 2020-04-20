@@ -41,12 +41,14 @@ public class StomachManager : MonoBehaviour
             currentFood = Instantiate(foodPrefab, spawnFoodTransform.position, Quaternion.identity);
             currentFood.GetComponent<FoodScript>().currentFood = (FoodScript.Food)foodType;
             foodOnCD = true;
-            Invoke("ResetFoodCD", timeBetweenFood);
         }
-        float transferAmount = Time.deltaTime;
-        currentCapacity -= transferAmount;
-        float excess = BladderManager.instance.TransfertToBladder(transferAmount);
-        currentCapacity += excess;
+        if(currentCapacity > 0)
+        {
+            float transferAmount = Time.deltaTime;
+            currentCapacity -= transferAmount;
+            float excess = BladderManager.instance.TransfertToBladder(transferAmount);
+            currentCapacity += excess;
+        }
         if (currentCapacity <= 0f)
         {
             currentCapacity = 0f;
@@ -65,8 +67,14 @@ public class StomachManager : MonoBehaviour
         currentCapacity += gain;
     }
 
-    void ResetFoodCD()
+    public void StartCoroutineFoodCD()
     {
+        StartCoroutine(ResetFoodCD());
+    }
+
+    IEnumerator ResetFoodCD()
+    {
+        yield return new WaitForSeconds(timeBetweenFood);
         foodOnCD = false;
     }
 }

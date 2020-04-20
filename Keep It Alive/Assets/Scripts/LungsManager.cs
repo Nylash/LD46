@@ -84,6 +84,6 @@ public class LungsManager : MonoBehaviour
 
     void Alarm()
     {
-        print("ALERT LACK OXYGEN HAAAAAAAAALP");
+        
     }
 }

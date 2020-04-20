@@ -39,6 +39,7 @@ public class FoodScript : MonoBehaviour
     {
         if (LungsManager.instance.tracheaOpen)
         {
+            StomachManager.instance.StartCoroutineFoodCD();
             LungsManager.instance.foodStucked = true;
             StomachManager.instance.mouthOpen = false;
             InteractManager.instance.mouthButton.SetBool("Close", true);
@@ -53,6 +54,7 @@ public class FoodScript : MonoBehaviour
 
     public void StomachReached()
     {
+        StomachManager.instance.StartCoroutineFoodCD();
         StomachManager.instance.AbsorbFood(currentGain);
         InteractManager.instance.foodInStomach = false;
         Destroy(gameObject);
