@@ -10,6 +10,7 @@ public class BladderManager : MonoBehaviour
     public float maxCapacity;
     public float lossPerSecondWhenOpen;
     public float timeBeforeKillKidneyWhenFull;
+    public float stomachSpeedUpEmptying;
 
     [Header("COMPONENTS")]
     public SpriteRenderer render;
@@ -49,8 +50,16 @@ public class BladderManager : MonoBehaviour
             {
                 currentCapacity -= lossPerSecondWhenOpen * Time.deltaTime;
                 if (currentCapacity <= 0f)
+                {
                     currentCapacity = 0;
+                    StomachManager.instance.speedEmptying = stomachSpeedUpEmptying;
+                }
+                else
+                    StomachManager.instance.speedEmptying = 1;
+
             }
+            else
+                StomachManager.instance.speedEmptying = 1;
             filling.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
         }
     }

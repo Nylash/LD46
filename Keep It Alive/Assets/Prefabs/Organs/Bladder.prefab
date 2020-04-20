@@ -132,6 +132,7 @@ MonoBehaviour:
   maxCapacity: 45
   lossPerSecondWhenOpen: 10
   timeBeforeKillKidneyWhenFull: 5
+  stomachSpeedUpEmptying: 3
   render: {fileID: 2583460206262582651}
   peeing: 0
   full: 0

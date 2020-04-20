@@ -20,6 +20,7 @@ public class StomachManager : MonoBehaviour
     public GameObject currentFood;
     public bool mouthOpen;
     public float currentCapacity;
+    public float speedEmptying = 1;
     bool foodOnCD;
 
     private void Awake()
@@ -47,7 +48,7 @@ public class StomachManager : MonoBehaviour
             }
             if (currentCapacity > 0)
             {
-                float transferAmount = Time.deltaTime;
+                float transferAmount = Time.deltaTime * speedEmptying;
                 currentCapacity -= transferAmount;
                 float excess = BladderManager.instance.TransfertToBladder(transferAmount);
                 currentCapacity += excess;
