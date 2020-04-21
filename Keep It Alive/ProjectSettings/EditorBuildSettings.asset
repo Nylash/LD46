@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/LaBoulangerie.unity
+    guid: 8c61db9f5136b594ba5cd0fac4d7bcaa
+  - enabled: 1
     path: Assets/Scenes/SplashScene.unity
     guid: b6f29a5543930904895297cd94c711bf
   - enabled: 1
