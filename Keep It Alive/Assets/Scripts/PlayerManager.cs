@@ -51,6 +51,8 @@ public class PlayerManager : MonoBehaviour
         inputMap.Gameplay.SwitchCamera.started += ctx => SwitchCamera();
         inputMap.Gameplay.Pause.started += ctx => Pause();
 
+        Time.timeScale = 1;
+
         controller = GetComponent<CharacterController2D>();
     }
 

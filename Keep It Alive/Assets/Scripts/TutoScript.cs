@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class TutoScript : MonoBehaviour
 {
+
+    public bool tutoScene = false;
     public Canvas pause;
     public Canvas hintBind;
     public Sprite[] tutoSprites;
@@ -23,11 +25,12 @@ public class TutoScript : MonoBehaviour
 
         inputMap.Gameplay.yAxis.started += ctx => Tuto(ctx.ReadValue<float>());
         inputMap.Gameplay.Menu.started += ctx => Menu();
+        inputMap.Gameplay.Start.started += ctx => LoadGameFromTuto();
     }
 
     void Tuto(float ctx)
     {
-        if (pause.enabled)
+        if (tutoScene)
         {
             if (ctx < 0)
                 index++;
@@ -38,27 +41,48 @@ public class TutoScript : MonoBehaviour
             if (index >= tutoSprites.Length)
                 index = tutoSprites.Length - 1;
             tutoRenderer.sprite = tutoSprites[index];
-            if(index != 0)
+        }
+        else
+        {
+            if (pause.enabled)
             {
-                if (!hintBind.enabled)
-                    hintBind.enabled = true;
-            }
-            else
-            {
-                if (hintBind.enabled)
-                    hintBind.enabled = false;
+                if (ctx < 0)
+                    index++;
+                if (ctx > 0)
+                    index--;
+                if (index < 0)
+                    index = 0;
+                if (index >= tutoSprites.Length)
+                    index = tutoSprites.Length - 1;
+                tutoRenderer.sprite = tutoSprites[index];
+                if (index != 0)
+                {
+                    if (!hintBind.enabled)
+                        hintBind.enabled = true;
+                }
+                else
+                {
+                    if (hintBind.enabled)
+                        hintBind.enabled = false;
+                }
             }
         }
     }
 
     void Menu()
     {
-        if (pause.enabled)
+        if (pause.enabled && !tutoScene)
         {
             Time.timeScale = 1;
             SceneManager.LoadScene("SplashScene");
         }
             
+    }
+
+    void LoadGameFromTuto()
+    {
+        if(tutoScene)
+            SceneManager.LoadScene("MainLevel");
     }
 
     public void ResetTuto()
