@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InteractManager : MonoBehaviour
 {
@@ -60,8 +58,7 @@ public class InteractManager : MonoBehaviour
                         lungsHint.sprite = lungsOk;
                         LungsManager.instance.UnstuckTrachea();
                         lungsButton.SetTrigger("Close");
-                    }
-                        
+                    }    
                 }
                 break;
             case Organ.bladder:
@@ -199,8 +196,7 @@ public class InteractManager : MonoBehaviour
                 source.PlayOneShot(AudioManager.instance.buzz, AudioManager.instance.buzzVolume);
             else
                 source.PlayOneShot(AudioManager.instance.buzz2, AudioManager.instance.buzz2Volume);
-        }
-            
+        }  
     }
 
     public enum Organ

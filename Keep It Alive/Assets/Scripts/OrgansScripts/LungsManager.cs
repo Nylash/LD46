@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class LungsManager : MonoBehaviour
 {
     public static LungsManager instance;
 
     [Header("CONFIGURATION")]
-    public float airMaxTime;
+    public float maxCapacity;
     public float pvLossPerSecond;
     public int inputToBeUnstucked;
 
@@ -24,7 +21,7 @@ public class LungsManager : MonoBehaviour
     public bool tracheaOpen = true;
     public bool foodStucked = false;
     public int currentInputNumber;
-    public float currentAir;
+    public float currentCapacity;
 
     private void Awake()
     {
@@ -36,11 +33,11 @@ public class LungsManager : MonoBehaviour
 
     private void Start()
     {
-        currentAir = airMaxTime;
+        currentCapacity = maxCapacity;
         filling1 = renderer1.material;
         filling2 = renderer2.material;
-        filling1.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
-        filling2.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
+        filling1.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
+        filling2.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
 
         anim = GetComponent<Animator>();
     }
@@ -51,26 +48,26 @@ public class LungsManager : MonoBehaviour
         {
             if (!tracheaOpen || foodStucked)
             {
-                currentAir -= Time.deltaTime;
-                if (currentAir <= 0f)
+                currentCapacity -= Time.deltaTime;
+                if (currentCapacity <= 0f)
                 {
-                    currentAir = 0f;
+                    currentCapacity = 0f;
                     HeartManager.instance.TakeDamage(pvLossPerSecond * Time.deltaTime);
                 }
             }
             else
             {
-                if(currentAir <= 0f)
+                if(currentCapacity <= 0f)
                 {
                     if (!specificSoundSource.isPlaying)
                         specificSoundSource.PlayOneShot(AudioManager.instance.breath, AudioManager.instance.breathVolume);
                 }
                     
-                currentAir += Time.deltaTime;
-                if (currentAir > airMaxTime)
-                    currentAir = airMaxTime;
+                currentCapacity += Time.deltaTime;
+                if (currentCapacity > maxCapacity)
+                    currentCapacity = maxCapacity;
             }
-            if (currentAir <= 0f || foodStucked)
+            if (currentCapacity <= 0f || foodStucked)
             {
                 if (!anim.GetBool("Danger"))
                     anim.SetBool("Danger", true);
@@ -80,8 +77,8 @@ public class LungsManager : MonoBehaviour
                 if (anim.GetBool("Danger"))
                     anim.SetBool("Danger", false);
             }
-            filling1.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
-            filling2.SetFloat("Vector1_B2746C0A", currentAir / airMaxTime);
+            filling1.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
+            filling2.SetFloat("Vector1_B2746C0A", currentCapacity / maxCapacity);
         }
     }
 

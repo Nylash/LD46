@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -15,8 +12,8 @@ public class PlayerManager : MonoBehaviour
 
     [Header("VARIABLES")]
     public InteractManager.Organ currentOrgan = InteractManager.Organ.none;
-    float horizontalMove = 0f;
-    float verticalMove = 0f;
+    public float horizontalMove = 0f;
+    public float verticalMove = 0f;
     bool jump = false;
     bool onLadder = false;
     bool onLadderTrigger = false;
@@ -64,7 +61,7 @@ public class PlayerManager : MonoBehaviour
             {
                 if (onLadderTrigger)
                 {
-                    if (verticalMove > .1f && !onLadder)
+                    if (verticalMove > .1f && !onLadder && Mathf.Abs(horizontalMove) < .1f)
                     {
                         onLadder = true;
                         animController.SetBool("Climbing", true);

@@ -290,6 +290,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1903588833}
     m_Modifications:
+    - target: {fileID: 6276240016558126752, guid: e957d8a30e303024ca9e3e37ecd113fb,
+        type: 3}
+      propertyPath: maxCapacity
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 6276240016558126754, guid: e957d8a30e303024ca9e3e37ecd113fb,
         type: 3}
       propertyPath: m_Name
@@ -7675,6 +7680,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrainButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3482856194750081446, guid: e154961263a09694e92178cfc2dfdbc1,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999974881846247748, guid: e154961263a09694e92178cfc2dfdbc1,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e154961263a09694e92178cfc2dfdbc1, type: 3}
 --- !u!4 &691364481 stripped
@@ -14284,6 +14299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13530566ffb9fb94a87320029871eab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutoScene: 0
   pause: {fileID: 1591192251}
   hintBind: {fileID: 2060490460}
   tutoSprites:
@@ -19587,6 +19603,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RightKidneyButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452771830086102035, guid: 9885109a66dbd8f4c9ab7f85953779d2,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9885109a66dbd8f4c9ab7f85953779d2, type: 3}

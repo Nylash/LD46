@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class CharacterController2D : MonoBehaviour
 {
 #pragma warning disable 0649
+	[Header("CONFIGURATION")]
 	[SerializeField] private float jumpForce = 400f;
 	[Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
 	[SerializeField] private bool airControl = false;
@@ -11,14 +12,17 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform groundCheck;
 #pragma warning restore 0649
 
+	[Header("COMPONENTS")]
+	public Rigidbody2D rb;
 	public Transform JLFXspot;
+
+	[Header("VARIABLES")]
 	public GameObject JLFX;
 	public ParticleSystem walkFX;
 	const float groundedRadius = .2f;
 	public bool grounded;
-	public Rigidbody2D rb;
-	private bool facingRight = true;
-	private Vector3 velocity = Vector3.zero;
+	bool facingRight = true;
+	Vector3 velocity = Vector3.zero;
 
 	[Header("Events")]
 	[Space]
@@ -88,6 +92,7 @@ public class CharacterController2D : MonoBehaviour
 		{
 			Instantiate(JLFX, JLFXspot.transform.position, JLFX.transform.rotation);
 			grounded = false;
+			rb.velocity = new Vector2(rb.velocity.x, 0);
 			rb.AddForce(new Vector2(0f, jumpForce));
 			PlayerManager.instance.animController.speed = 1;
 			PlayerManager.instance.animController.SetTrigger("Jump");
