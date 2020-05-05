@@ -81,28 +81,6 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "b870cc4d-7005-464c-b910-335f98a76020",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "Invert",
-                    "groups": "Keyboard",
-                    "action": "xAxis",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a046b8b2-a12a-4216-b1a0-8a54a7228e5a",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "xAxis",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "508b445a-de9a-4552-b3ca-b30539110f3b",
                     "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
@@ -124,26 +102,70 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "c22bd105-6c98-4585-9f1a-c0c5c0edb663",
-                    "path": "<Keyboard>/leftArrow",
+                    "name": "AD Axis",
+                    "id": "ed9d2ba0-5558-40f2-85c3-526e45c0521a",
+                    "path": "1DAxis",
                     "interactions": "",
-                    "processors": "Invert",
-                    "groups": "Keyboard",
+                    "processors": "",
+                    "groups": "",
                     "action": "xAxis",
-                    "isComposite": false,
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "49c7e933-0b1d-4247-a9c7-280493852c8d",
+                    "name": "negative",
+                    "id": "19e11ab9-f231-49ac-969a-d81a0dcfe768",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "xAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "33853736-0c4b-4738-a8ba-de7bf15cf5db",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "xAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Arrows axis",
+                    "id": "15640f38-7e51-42ed-b9bd-1c38484c3459",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "xAxis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "88c73f81-08b3-41d2-9d80-d130ddfbd3ee",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "xAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "c39c5a37-19d2-4aa6-bd3e-70e705aeb5b6",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "xAxis",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -169,55 +191,11 @@
                 },
                 {
                     "name": "",
-                    "id": "466aa687-24c2-4cfa-bb27-532b6ce5eb24",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "yAxis",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3ab29249-a0c3-48b5-9c64-d7c19982332e",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "Invert",
-                    "groups": "Keyboard",
-                    "action": "yAxis",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "2327f571-0fe6-402a-af45-dad3cdb20ed0",
                     "path": "<Gamepad>/leftStick/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "yAxis",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "654a55a6-e06e-47ed-b962-541c182c3e8b",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "yAxis",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8c3c0f40-fdda-493e-84e8-059a8445a1c8",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "Invert",
-                    "groups": "Keyboard",
                     "action": "yAxis",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -232,6 +210,72 @@
                     "action": "yAxis",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "WS axis",
+                    "id": "ccb9305b-f62b-4f84-a6d5-aefba067dacd",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "yAxis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "e340da72-6721-42b9-8b68-5aed0433fa9d",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "yAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "b4c77e21-832a-4122-a45b-62e29c66115a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "yAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Arrows axis",
+                    "id": "83859ab1-4cd9-4949-8b25-192e137d9671",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "yAxis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "2babc3e8-a068-4e9d-bfbd-baec8985b530",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "yAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "4824c93d-0710-4866-a3db-b3df135f526c",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "yAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",

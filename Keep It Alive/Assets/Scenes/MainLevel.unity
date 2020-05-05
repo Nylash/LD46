@@ -20417,6 +20417,11 @@ PrefabInstance:
       propertyPath: objectTutoScript
       value: 
       objectReference: {fileID: 1591192249}
+    - target: {fileID: 7997289842119779079, guid: 7a67bf9da0b115d4190ae930abc63754,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7997289842119779082, guid: 7a67bf9da0b115d4190ae930abc63754,
         type: 3}
       propertyPath: m_Name
