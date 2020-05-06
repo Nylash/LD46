@@ -4,10 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class TutoScript : MonoBehaviour
 {
+    public static TutoScript instance;
 
     public bool tutoScene = false;
     public Canvas pause;
-    public Canvas hintBind;
+    public Canvas tuto;
     public Sprite[] tutoSprites;
     public Image tutoRenderer;
 
@@ -19,20 +20,24 @@ public class TutoScript : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+
         inputMap = new InputMap();
 
-        inputMap.Gameplay.yAxis.started += ctx => Tuto(ctx.ReadValue<float>());
-        inputMap.Gameplay.Menu.started += ctx => Menu();
+        inputMap.Gameplay.xAxis.started += ctx => Tuto(ctx.ReadValue<float>());
         inputMap.Gameplay.Start.started += ctx => LoadGameFromTuto();
     }
 
-    void Tuto(float ctx)
+    public void Tuto(float ctx)
     {
-        if (tutoScene)
+        if (tuto.enabled)
         {
-            if (ctx < 0)
-                index++;
             if (ctx > 0)
+                index++;
+            if (ctx < 0)
                 index--;
             if (index < 0)
                 index = 0;
@@ -40,40 +45,6 @@ public class TutoScript : MonoBehaviour
                 index = tutoSprites.Length - 1;
             tutoRenderer.sprite = tutoSprites[index];
         }
-        else
-        {
-            if (pause.enabled)
-            {
-                if (ctx < 0)
-                    index++;
-                if (ctx > 0)
-                    index--;
-                if (index < 0)
-                    index = 0;
-                if (index >= tutoSprites.Length)
-                    index = tutoSprites.Length - 1;
-                tutoRenderer.sprite = tutoSprites[index];
-                if (index != 0)
-                {
-                    if (!hintBind.enabled)
-                        hintBind.enabled = true;
-                }
-                else
-                {
-                    if (hintBind.enabled)
-                        hintBind.enabled = false;
-                }
-            }
-        }
-    }
-
-    void Menu()
-    {
-        if (pause.enabled && !tutoScene)
-        {
-            Time.timeScale = 1;
-            SceneManager.LoadScene("SplashScene");
-        }  
     }
 
     void LoadGameFromTuto()
@@ -86,6 +57,6 @@ public class TutoScript : MonoBehaviour
     {
         index = 0;
         tutoRenderer.sprite = tutoSprites[0];
-        hintBind.enabled = false;
+        tuto.enabled = false;
     }
 }

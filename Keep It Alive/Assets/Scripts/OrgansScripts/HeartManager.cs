@@ -43,7 +43,7 @@ public class HeartManager : MonoBehaviour
         if (currentLife <= 0)
         {
             currentLife = 0f;
-            ScoreManager.instance.scoring = false;
+            UIManager.instance.scoring = false;
             endScreen.enabled = true;
             defeat = true;
             cam1.SetActive(false);

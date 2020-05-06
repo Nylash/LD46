@@ -18,7 +18,6 @@ public class PlayerManager : MonoBehaviour
     bool onLadder = false;
     bool onLadderTrigger = false;
     bool canInteract = false;
-    bool pause;
 
     [Header("COMPONENTS")]
     public Canvas pauseMenu;
@@ -121,28 +120,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (!HeartManager.instance.defeat)
         {
-            pause = !pause;
-            pauseMenu.enabled = pause;
-            Time.timeScale = (pause ? 0 : 1);
-            if (!pause)
-            {
-                objectTutoScript.GetComponent<TutoScript>().ResetTuto();
-                foreach (AudioSource item in AudioManager.instance.allSources)
-                {
-                    if (item != AudioManager.instance.musicSource)
-                        item.Play();
-                }
-                AudioManager.instance.musicSource.volume *= 2;
-            }
-            else
-            {
-                foreach (AudioSource item in AudioManager.instance.allSources)
-                {
-                    if(item != AudioManager.instance.musicSource)
-                        item.Pause();
-                }
-                AudioManager.instance.musicSource.volume /= 2;
-            }                
+            UIManager.instance.Pause(!pauseMenu.enabled);      
         }
     }
 
