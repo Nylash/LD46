@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ladder
   - Organ
+  - UI_Replay
   layers:
   - Default
   - TransparentFX

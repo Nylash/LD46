@@ -18,15 +18,11 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI startText;
     public TextMeshProUGUI endScore;
     public TextMeshProUGUI scoreText;
-    InputMap inputMap;
 
     [Header("VARIABLES")]
     public bool scoring = true;
     public GameObject lastSelected;
     float score;
-
-    private void OnEnable() => inputMap.Gameplay.Enable();
-    private void OnDisable() => inputMap.Gameplay.Disable();
 
     private void Awake()
     {
@@ -34,11 +30,6 @@ public class UIManager : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
-
-        inputMap = new InputMap();
-
-        inputMap.Gameplay.Start.started += ctx => Replay();
-        inputMap.Gameplay.Quit.started += ctx => SplashScreen();
     }
 
     private void Start()
@@ -65,7 +56,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (pause.enabled && !tuto.enabled)
+        if ((pause.enabled && !tuto.enabled) || end.enabled)
         {
             if (EventSystem.current.currentSelectedGameObject != lastSelected)
             {
@@ -90,6 +81,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = (pauseActivate ? 0 : 1);
         if (!pauseActivate)
         {
+            pause.gameObject.GetComponent<ButtonsActivator>().DesactivateButtons();
             TutoScript.instance.ResetTuto();
             foreach (AudioSource item in AudioManager.instance.allSources)
             {
@@ -100,6 +92,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            pause.gameObject.GetComponent<ButtonsActivator>().ActivateButtons();
             foreach (AudioSource item in AudioManager.instance.allSources)
             {
                 if (item != AudioManager.instance.musicSource)
@@ -125,13 +118,13 @@ public class UIManager : MonoBehaviour
         TutoScript.instance.Tuto(-1);
     }
 
-    void Replay()
+    public void Replay()
     {
         if (end.enabled)
             SceneManager.LoadScene("MainLevel");
     }
 
-    void SplashScreen()
+    public void SplashScreen()
     {
         if (end.enabled)
             SceneManager.LoadScene("SplashScene");

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class HeartManager : MonoBehaviour
 {
@@ -45,6 +46,8 @@ public class HeartManager : MonoBehaviour
             currentLife = 0f;
             UIManager.instance.scoring = false;
             endScreen.enabled = true;
+            endScreen.gameObject.GetComponent<ButtonsActivator>().ActivateButtons();
+            EventSystem.current.SetSelectedGameObject(GameObject.FindGameObjectWithTag("UI_Replay"));
             defeat = true;
             cam1.SetActive(false);
             cam2.SetActive(true);
