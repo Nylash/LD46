@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LaBoulangerie.unity
+    path: Assets/Scenes/Menus/LaBoulangerie.unity
     guid: 8c61db9f5136b594ba5cd0fac4d7bcaa
   - enabled: 1
-    path: Assets/Scenes/SplashScene.unity
+    path: Assets/Scenes/Menus/SplashScene.unity
     guid: b6f29a5543930904895297cd94c711bf
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
+    path: Assets/Scenes/Menus/MainMenu.unity
+    guid: b61fddebf8366a24a8ba63342572b32b
+  - enabled: 1
+    path: Assets/Scenes/Levels/Tutorial.unity
     guid: 9efffda914a0b874183830552ef4a4b8
   - enabled: 1
-    path: Assets/Scenes/MainLevel.unity
+    path: Assets/Scenes/Levels/MainLevel.unity
     guid: f234dfc1a0a8e3d4b8800f31c381d997
   m_configObjects: {}

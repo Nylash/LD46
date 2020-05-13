@@ -89,6 +89,7 @@ public class UIManager : MonoBehaviour
                     item.Play();
             }
             AudioManager.instance.musicSource.volume *= 2;
+            EventSystem.current.SetSelectedGameObject(null);
         }
         else
         {
@@ -103,12 +104,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void Menu()
+    public void MainMenu()
     {
-        if (pause.enabled)
+        if (pause.enabled || end.enabled)
         {
             Time.timeScale = 1;
-            SceneManager.LoadScene("SplashScene");
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
@@ -122,11 +123,5 @@ public class UIManager : MonoBehaviour
     {
         if (end.enabled)
             SceneManager.LoadScene("MainLevel");
-    }
-
-    public void SplashScreen()
-    {
-        if (end.enabled)
-            SceneManager.LoadScene("SplashScene");
     }
 }

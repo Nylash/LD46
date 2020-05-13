@@ -14,7 +14,7 @@ public class SplashScreenScript : MonoBehaviour
 
         inputMap = new InputMap();
 
-        inputMap.Gameplay.Start.started += ctx => SceneManager.LoadScene("Tutorial");
+        inputMap.Gameplay.Start.started += ctx => SceneManager.LoadScene("MainMenu");
         inputMap.Gameplay.Quit.started += ctx => Application.Quit();
     }
 }
