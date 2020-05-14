@@ -1,20 +1,27 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class SplashScreenScript : MonoBehaviour
 {
-    InputMap inputMap;
 
-    private void OnEnable() => inputMap.Gameplay.Enable();
-    private void OnDisable() => inputMap.Gameplay.Disable();
+    InputAction anyButton;
 
     private void Awake()
     {
         Cursor.visible = false;
+    }
 
-        inputMap = new InputMap();
+    void EnableLoading()
+    {
+        anyButton = new InputAction(binding: "/*/<button>");
+        anyButton.Enable();
+        anyButton.started += ctx => LoadGame();
+    }
 
-        inputMap.Gameplay.Start.started += ctx => SceneManager.LoadScene("MainMenu");
-        inputMap.Gameplay.Quit.started += ctx => Application.Quit();
+    void LoadGame()
+    {
+        anyButton.Disable();
+        SceneManager.LoadScene("MainMenu");
     }
 }

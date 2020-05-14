@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class BoulangerieScript : MonoBehaviour
 {
-    public void Load()
+    public Animator splashScreenAnim;
+
+    void DisplaySplashScreen()
     {
-        SceneManager.LoadScene("SplashScene");
+        splashScreenAnim.SetTrigger("Display");
     }
 }

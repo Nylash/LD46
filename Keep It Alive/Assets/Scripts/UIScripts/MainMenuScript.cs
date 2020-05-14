@@ -18,7 +18,6 @@ public class MainMenuScript : MonoBehaviour
 
     void Update()
     {
-        print(EventSystem.current.currentSelectedGameObject != lastSelected);
         if (EventSystem.current.currentSelectedGameObject != lastSelected)
         {
             if (lastSelected)
