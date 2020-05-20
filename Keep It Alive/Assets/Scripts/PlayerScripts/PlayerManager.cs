@@ -106,7 +106,7 @@ public class PlayerManager : MonoBehaviour
 
     void Interact()
     {
-        if (canInteract)
+        if (canInteract && !pauseMenu.enabled)
             InteractManager.instance.InteractWith(currentOrgan);
     }
 
